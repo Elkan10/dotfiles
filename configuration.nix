@@ -157,6 +157,7 @@
   #  wget
     prismlauncher
     htop
+    libnotify
 
 
     anki-bin
