@@ -261,7 +261,10 @@
       "$terminal" = "kitty";
       "$fileManager" = "dolphin";
       "$menu" = "ags -t applauncher";
-      "$mainMod" = "SUPER";     
+      "$mainMod" = "SUPER"; 
+      monitor = [
+        ", 1920x1080@165, 0x0, 2"
+      ];    
       exec-once = [
         "$terminal"
         "nm-applet &"
