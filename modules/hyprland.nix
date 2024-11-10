@@ -263,7 +263,7 @@
       "$menu" = "ags -t applauncher";
       "$mainMod" = "SUPER"; 
       monitor = [
-        ", 1920x1080@165, 0x0, 2"
+        ", 1920x1080@165, 0x0, 1"
       ];    
       exec-once = [
         "$terminal"
