@@ -10,16 +10,17 @@ const date = Variable("", {
 // so to make a reuseable widget, make it a function
 // then you can simply instantiate one by calling it
 
+const workspace_icons = ["", "", "", "", ""];
+
 function Workspaces() {
     const activeId = hyprland.active.workspace.bind("id")
-    const workspaces = hyprland.bind("workspaces")
-        .as(ws => ws.map(({ id }) => Widget.Button({
+    const workspaces = Array.from({length: 5}, (_, index) => 1 + index).map((id) => Widget.Button({
             on_clicked: () => hyprland.messageAsync(`dispatch workspace ${id}`),
-            child: Widget.Label(`${id}`),
+            child: Widget.Label(`${workspace_icons[id - 1] || id}`),
             class_name: activeId.as(i => `${i === id ? "focused" : ""}`),
-        })))
+        }))
 
-    return Widget.Box({
+        return Widget.Box({
         class_name: "workspaces",
         children: workspaces,
     })
