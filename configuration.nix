@@ -14,9 +14,12 @@
       inputs.home-manager.nixosModules.default
     ];
 
- 
-
-
+  services.playit = {
+    enable = true;
+    user = "playit";
+    group = "playit";
+    secretPath = "/home/elvis/.config/playit_gg/playit.toml";
+  };  
  
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -188,6 +191,7 @@
     orca-slicer
 
     git
+
   ];
 
   stylix.image = ./wallpaper.jpg;

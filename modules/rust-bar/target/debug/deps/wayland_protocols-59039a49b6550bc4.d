@@ -1,0 +1,10 @@
+/home/elvis/.dotfiles/modules/rust-bar/target/debug/deps/libwayland_protocols-59039a49b6550bc4.rmeta: /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wayland-protocols-0.32.5/src/lib.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wayland-protocols-0.32.5/src/protocol_macro.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wayland-protocols-0.32.5/src/ext.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wayland-protocols-0.32.5/src/wp.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wayland-protocols-0.32.5/src/xdg.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wayland-protocols-0.32.5/src/xwayland.rs
+
+/home/elvis/.dotfiles/modules/rust-bar/target/debug/deps/wayland_protocols-59039a49b6550bc4.d: /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wayland-protocols-0.32.5/src/lib.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wayland-protocols-0.32.5/src/protocol_macro.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wayland-protocols-0.32.5/src/ext.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wayland-protocols-0.32.5/src/wp.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wayland-protocols-0.32.5/src/xdg.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wayland-protocols-0.32.5/src/xwayland.rs
+
+/home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wayland-protocols-0.32.5/src/lib.rs:
+/home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wayland-protocols-0.32.5/src/protocol_macro.rs:
+/home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wayland-protocols-0.32.5/src/ext.rs:
+/home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wayland-protocols-0.32.5/src/wp.rs:
+/home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wayland-protocols-0.32.5/src/xdg.rs:
+/home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wayland-protocols-0.32.5/src/xwayland.rs:

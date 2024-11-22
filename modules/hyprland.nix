@@ -379,7 +379,9 @@
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
       ];
-      "windowrulev2" = "suppressevent maximize, class:.*";
+      windowrulev2 = [
+        "suppressevent maximize, class:.*"
+      ];
     };
   };
 }  

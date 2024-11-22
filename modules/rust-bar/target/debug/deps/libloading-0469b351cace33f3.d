@@ -1,0 +1,12 @@
+/home/elvis/.dotfiles/modules/rust-bar/target/debug/deps/liblibloading-0469b351cace33f3.rmeta: /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/lib.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/changelog.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/os/mod.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/os/unix/mod.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/os/unix/consts.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/util.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/error.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/safe.rs
+
+/home/elvis/.dotfiles/modules/rust-bar/target/debug/deps/libloading-0469b351cace33f3.d: /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/lib.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/changelog.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/os/mod.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/os/unix/mod.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/os/unix/consts.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/util.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/error.rs /home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/safe.rs
+
+/home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/lib.rs:
+/home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/changelog.rs:
+/home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/os/mod.rs:
+/home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/os/unix/mod.rs:
+/home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/os/unix/consts.rs:
+/home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/util.rs:
+/home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/error.rs:
+/home/elvis/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/safe.rs:

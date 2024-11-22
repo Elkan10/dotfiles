@@ -17,6 +17,8 @@
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
 
     ags.url = "github:Aylur/ags";
+
+    playit.url = "github:pedorich-n/playit-nixos-module";
   };
  outputs = {self, nixpkgs, home-manager, nixvim, ...}@inputs:
   let
@@ -32,6 +34,7 @@
           inputs.stylix.nixosModules.stylix
       	  inputs.home-manager.nixosModules.default
           inputs.nix-minecraft.nixosModules.minecraft-servers
+          inputs.playit.nixosModules.default
           ({...}: {
             nix.registry = {
               main.flake = self;
