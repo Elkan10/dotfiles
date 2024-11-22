@@ -18,7 +18,7 @@
     enable = true;
     user = "playit";
     group = "playit";
-    secretPath = "/home/elvis/.config/playit_gg/playit.toml";
+    secretPath = "/home/elvis/.dotfiles/playit.toml";
   };  
  
   # Bootloader.
