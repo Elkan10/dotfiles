@@ -16,9 +16,11 @@
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
 
-    ags.url = "github:Aylur/ags";
+    ags.url = "github:Aylur/ags/bb91f7c8fdd2f51c79d3af3f2881cacbdff19f60";
 
     playit.url = "github:pedorich-n/playit-nixos-module";
+
+    sops-nix.url = "github:Mic92/sops-nix";
   };
  outputs = {self, nixpkgs, home-manager, nixvim, ...}@inputs:
   let

@@ -12,14 +12,23 @@
       ./modules/games-conf.nix
       ./modules/minecraft.nix
       inputs.home-manager.nixosModules.default
+      inputs.sops-nix.nixosModules.sops
     ];
 
   services.playit = {
     enable = true;
     user = "playit";
     group = "playit";
-    secretPath = "/home/elvis/.dotfiles/playit.toml";
-  };  
+    secretPath = "${config.sops.secrets."playit_key".path}";
+  };
+
+  sops.defaultSopsFile = ./secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/home/elvis/.config/sops/age/keys.txt";
+
+  sops.secrets."playit_key" = {
+    owner = "playit";
+  };
  
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
