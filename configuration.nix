@@ -70,10 +70,10 @@
 
   services = {
     desktopManager.plasma6 = {
-      enable = true;
+      enable = false;
     };
     displayManager = {
-      defaultSession = "plasma";
+      defaultSession = "hyprland";
       sddm = {
 	      enable = true;
 	      wayland.enable = true;

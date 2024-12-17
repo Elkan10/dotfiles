@@ -8,7 +8,7 @@ pkgs.stdenv.mkDerivation {
   ];
   buildPhase = ''
     unzip peacock.zip
-    cd ./Peacock-v7.3.4-linux
+    cd ./Peacock-v7.5.0-linux
     echo "node --enable-source-maps --harmony $out/chunk0.js --hmr" > start-peacock-server.sh
     chmod +x start-peacock-server.sh   
   '';
