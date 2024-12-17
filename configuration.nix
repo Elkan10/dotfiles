@@ -75,8 +75,12 @@
     displayManager = {
       defaultSession = "hyprland";
       sddm = {
+        package = pkgs.libsForQt5.sddm;
+        theme = "sddm-sugar-dark";
 	      enable = true;
 	      wayland.enable = true;
+        extraPackages = [
+        ];
       };
     };
   };
@@ -200,6 +204,9 @@
     orca-slicer
 
     git
+   
+    (import ./sddm-theme.nix {inherit pkgs;})   
+    pkgs.libsForQt5.qt5.qtgraphicaleffects
 
   ];
 

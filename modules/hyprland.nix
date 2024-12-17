@@ -1,4 +1,11 @@
-{pkgs, config, lib, ...}: {
+{pkgs, config, lib, ...}: 
+let 
+image = pkgs.fetchurl {
+  url = "https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/main/landscapes/Clearnight.jpg";
+  sha256 = "1ycxdhkn01gdkmn8fy5jyrnlbhnz7l1cyqib6zw12xfm3ihfiixi";
+};
+in
+{
   programs.rofi = {
     enable = true;
   };
@@ -199,10 +206,10 @@
     enable = true;
     settings = {
       preload = [
-        "/home/elvis/.dotfiles/forrest.png"
+        "${image}"
       ];
       wallpaper = [
-        ",/home/elvis/.dotfiles/forrest.png"
+        ",${image}"
       ];
     };
   };
@@ -211,7 +218,7 @@
     settings = {
       background = [{
         monitor = "";
-        path = "/home/elvis/.dotfiles/forrest.png";
+        path = "${image}";
         blur_passes = 0;
         blur_size = 7;
         noise = 0.0117;
