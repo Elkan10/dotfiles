@@ -3,7 +3,16 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, inputs, ... }:
-
+let
+sddm-astronaut-m = pkgs.sddm-astronaut.override {
+  themeConfig = {
+    Background = ''${pkgs.fetchurl {
+        url = "https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/main/landscapes/forrest.png";
+        sha256 = "00qx3h60s92hmf09ik1s3984jym6li270201qqzs5x4yks7q6flc";
+    }}'';
+  };
+};
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -75,12 +84,11 @@
     displayManager = {
       defaultSession = "hyprland";
       sddm = {
-        package = pkgs.libsForQt5.sddm;
-        theme = "sddm-sugar-dark";
+        package = pkgs.kdePackages.sddm;
+        theme = "sddm-astronaut-theme";
 	      enable = true;
 	      wayland.enable = true;
-        extraPackages = [
-        ];
+        extraPackages = [ sddm-astronaut-m ];
       };
     };
   };
@@ -204,17 +212,11 @@
     orca-slicer
 
     git
-   
-    (import ./sddm-theme.nix {inherit pkgs;})   
-    pkgs.libsForQt5.qt5.qtgraphicaleffects
 
+    sddm-astronaut-m
   ];
 
-  stylix.image = ./wallpaper.jpg;
-  stylix.polarity = "dark";
 
-  stylix.targets.gnome.enable = true;
-  stylix.targets.nixvim.enable = false;
 
   services.hardware.openrgb.enable = true;
 

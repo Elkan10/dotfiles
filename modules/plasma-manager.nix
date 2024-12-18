@@ -1,6 +1,6 @@
 {pkgs, config, ...}: {
   programs.plasma = {
-    enable = true;
+    enable = false;
     workspace = {
       clickItemTo = "open";
       lookAndFeel = "org.kde.breezedark.desktop";

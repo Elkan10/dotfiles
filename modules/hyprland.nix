@@ -1,8 +1,8 @@
 {pkgs, config, lib, ...}: 
 let 
 image = pkgs.fetchurl {
-  url = "https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/main/landscapes/Clearnight.jpg";
-  sha256 = "1ycxdhkn01gdkmn8fy5jyrnlbhnz7l1cyqib6zw12xfm3ihfiixi";
+  url = "https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/main/landscapes/forrest.png";
+  sha256 = "00qx3h60s92hmf09ik1s3984jym6li270201qqzs5x4yks7q6flc";
 };
 in
 {
