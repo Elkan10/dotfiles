@@ -1,0 +1,22 @@
+{pkgs, config, lib, ...}:
+let
+  helpers = import ./../lib/helpers.nix {inherit lib;};
+  mkop = helpers.mkListOption config "core";
+  packages = [
+    (mkop "git" pkgs.git "Git")
+    (mkop "htop" pkgs.htop "Htop")
+    (mkop "libnotify" pkgs.libnotify "LibNotify")
+    (mkop "wl-clipboard" pkgs.wl-clipboard "Wl-Clipboard")
+    (mkop "usbutils" pkgs.usbutils "Usb Utils")
+    (mkop "coreutils" pkgs.coreutils "Core Utils")
+    (mkop "neofetch" pkgs.neofetch "NeoFetch")
+  ];
+in
+{
+  options = lib.recursiveUpdate (helpers.mkOptions packages) {core.enable = lib.mkEnableOption "Core";};
+
+    
+  config = {
+    environment.systemPackages = helpers.mkList packages;
+  };
+}

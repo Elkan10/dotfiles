@@ -3,34 +3,70 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, inputs, ... }:
-let
-sddm-astronaut-m = pkgs.sddm-astronaut.override {
-  themeConfig = {
-    Background = ''${pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/main/landscapes/forrest.png";
-        sha256 = "00qx3h60s92hmf09ik1s3984jym6li270201qqzs5x4yks7q6flc";
-    }}'';
-  };
-};
-in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./modules/nvidia-conf.nix
-      ./modules/games-conf.nix
-      ./modules/minecraft.nix
-      inputs.home-manager.nixosModules.default
-      inputs.sops-nix.nixosModules.sops
+      ./hardware/nvidia.nix
+      ./nixosModules
     ];
 
-  services.playit = {
+  i18n.inputMethod = {
+    type = "fcitx5";
     enable = true;
-    user = "playit";
-    group = "playit";
-    secretPath = "${config.sops.secrets."playit_key".path}";
+    fcitx5.addons = with pkgs; [
+      fcitx5-m17n
+      fcitx5-hangul
+    ];
   };
 
+  widgets = {
+    enable = true;
+    status_bar.enable = true;
+  };
+
+  playit.enable = true;
+  steam.enable = true;
+  heroicgl.enable = true;
+  prismlauncher.enable = true;
+  vesktop.enable = true;
+  mcservers.enable = true;
+  sddm-qt6-wl = {
+    enable = true;
+    theme-name = "sddm-astronaut-theme";
+    theme = (import ./derivations/sddm-astronaut-mod.nix {
+      inherit pkgs;
+      bg = (import ./derivations/images.nix {inherit pkgs;}).forest-png;
+    });
+  };
+
+  core = {
+    enable = true;
+    htop.enable = true;
+    libnotify.enable = true;
+    wl-clipboard.enable = true;
+    usbutils.enable = true;
+    coreutils.enable = true;
+    neofetch.enable = true;
+    git.enable = true;
+  };
+
+  lsp = {
+    enable = true;
+    rust.enable = true;
+    nix.enable = true;
+    lldb-18.enable = true;
+    typescript.enable = true;
+  };
+
+  compat = {
+    enable = true;
+    wine.enable = true;
+    protontricks.enable = true;
+    mangohud.enable = true;
+  };
+
+  
   sops.defaultSopsFile = ./secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/elvis/.config/sops/age/keys.txt";
@@ -77,22 +113,9 @@ in
     LC_TIME = "sv_SE.UTF-8";
   };
 
-  services = {
-    desktopManager.plasma6 = {
-      enable = false;
-    };
-    displayManager = {
-      defaultSession = "hyprland";
-      sddm = {
-        package = pkgs.kdePackages.sddm;
-        theme = "sddm-astronaut-theme";
-	      enable = true;
-	      wayland.enable = true;
-        extraPackages = [ sddm-astronaut-m ];
-      };
-    };
-  };
+  services.displayManager.sddm.theme = "sddm-astronaut-theme";
 
+  
   
 
   # Configure keymap in X11
@@ -128,7 +151,7 @@ in
   };
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -174,55 +197,14 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-    prismlauncher
-    htop
-    libnotify
-
-
-    anki-bin
-    mpv-unwrapped
-
-    usbutils
-    mangohud
-    wl-clipboard
-
-    protontricks
-    wine
-
-    appimage-run
-
-    (import ./peacock/peacock.nix {pkgs = pkgs;})
-
-    flightgear
-
-    coreutils
-    neofetch
-    google-chrome
-
-    nil
-    rust-analyzer
-    lldb_18
-    typescript-language-server
-
-    orca-slicer
-
-    git
-
-    sddm-astronaut-m
-  ];
-
+ 
 
 
   services.hardware.openrgb.enable = true;
 
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override {fonts = ["JetBrainsMono"];})
+      nerd-fonts.jetbrains-mono
     ];
   };
 

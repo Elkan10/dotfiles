@@ -2,16 +2,22 @@
 
 {
   imports = [
-    ./modules/discord.nix
-    ./modules/programming.nix
-    ./modules/plasma-manager.nix
-    ./modules/hyprland.nix
-    ./modules/ags.nix
-    inputs.nixvim.homeManagerModules.nixvim
-    inputs.plasma-manager.homeManagerModules.plasma-manager
-    inputs.ags.homeManagerModules.default
+    ./homeModules
   ];
 
+  bash.enable = true;
+  hyprland.enable = true;
+  hyprlock.enable = true;
+  hyprpaper.enable = true;
+  starship.enable = true;
+  kitty.enable = true;
+  rofi.enable = true;
+
+  helix = {
+    enable = true;
+    rust.enable = true;
+    nix.enable = true;
+  };
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "elvis";

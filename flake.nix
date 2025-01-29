@@ -6,23 +6,14 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    stylix.url = "github:danth/stylix";
-
-    nixvim.url = "github:nix-community/nixvim";
-    # nixvim.inputs.nixpkgs.follows = "nixpkgs";
-
-    plasma-manager.url = "github:nix-community/plasma-manager";
-    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
-
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
 
-    ags.url = "github:Aylur/ags/bb91f7c8fdd2f51c79d3af3f2881cacbdff19f60";
 
     playit.url = "github:pedorich-n/playit-nixos-module";
 
     sops-nix.url = "github:Mic92/sops-nix";
   };
- outputs = {self, nixpkgs, home-manager, nixvim, ...}@inputs:
+ outputs = {self, nixpkgs, home-manager, ...}@inputs:
   let
     lib = nixpkgs.lib;
     system = "x86_64-linux";
@@ -30,13 +21,13 @@
   in {
     nixosConfigurations = {
       nixos = lib.nixosSystem {
-      	specialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs;};
         modules = [ 
           ./configuration.nix
-          inputs.stylix.nixosModules.stylix
       	  inputs.home-manager.nixosModules.default
           inputs.nix-minecraft.nixosModules.minecraft-servers
           inputs.playit.nixosModules.default
+          inputs.sops-nix.nixosModules.sops
           ({...}: {
             nix.registry = {
               main.flake = self;
@@ -51,12 +42,6 @@
           cargo
           rustc
           gcc
-        ];
-      };
-      peacock = pkgs.mkShell {
-        buildInputs = [
-          (import ./peacock/peacock.nix {pkgs = pkgs;})
-          pkgs.nodejs_18
         ];
       };
       mcdev = pkgs.mkShell {
