@@ -10,7 +10,7 @@
       settings = {
         "$terminal" = "kitty";
         "$fileManager" = "dolphin";
-        "$menu" = "ags -t applauncher";
+        "$menu" = "rofi -show drun";
         "$mainMod" = "SUPER"; 
         monitor = [
           ", 1920x1080@165, 0x0, 1"
