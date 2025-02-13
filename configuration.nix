@@ -40,6 +40,8 @@
     });
   };
 
+  blender.enable = true;
+
   core = {
     enable = true;
     htop.enable = true;
