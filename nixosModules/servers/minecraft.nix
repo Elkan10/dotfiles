@@ -12,7 +12,7 @@
       enable = true;
       eula = true;
       servers.fabric-server = {
-        enable = true;
+        enable = false;
         package = pkgs.fabricServers.fabric-1_21_3;
         autoStart = true;
         openFirewall = false;
@@ -201,7 +201,7 @@
       
       };
       servers.geyser-server = {
-        enable = true;
+        enable = false;
         autoStart = false;
         openFirewall = false;
     

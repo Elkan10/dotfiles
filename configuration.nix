@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -25,7 +25,7 @@
     status_bar.enable = true;
   };
 
-  playit.enable = true;
+  playit.enable = false;
   steam.enable = true;
   heroicgl.enable = true;
   prismlauncher.enable = true;
@@ -72,7 +72,7 @@
   sops.age.keyFile = "/home/elvis/.config/sops/age/keys.txt";
 
   sops.secrets."playit_key" = {
-    owner = "playit";
+    owner = lib.mkIf config.playit.enable "playit";
   };
  
   # Bootloader.
@@ -151,7 +151,11 @@
   };
 
   # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
+  hardware.enableAllFirmware = true;
+  services.pulseaudio = {
+    enable = false;
+    support32Bit = true;
+  };
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -159,11 +163,11 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
-    #media-session.enable = true;
+    wireplumber.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -173,7 +177,7 @@
   users.users.elvis = {
     isNormalUser = true;
     description = "Elvis";
-    extraGroups = [ "networkmanager" "wheel" "input" "uinput"];
+    extraGroups = [ "networkmanager" "wheel" "input" "uinput" "audio"];
     packages = with pkgs; [
       kate
     #  thunderbird
