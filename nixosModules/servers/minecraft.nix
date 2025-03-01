@@ -7,7 +7,7 @@
   config = lib.mkIf config.mcservers.enable {
       
     nixpkgs.overlays = [ inputs.nix-minecraft.overlay ]; 
-     # Minecraft
+    # Minecraft
     services.minecraft-servers = {
       enable = true;
       eula = true;
