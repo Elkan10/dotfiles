@@ -6,6 +6,7 @@
     ./core.nix
     ./lsp.nix
     ./widgets.nix
+    ./openrgb.nix
     ./games
     ./displayManager
     ./servers

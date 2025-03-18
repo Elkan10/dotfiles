@@ -4,7 +4,7 @@ let
   mkop = helpers.mkListOption config "lsp";
   packages = [
     (mkop "rust" pkgs.rust-analyzer "Rust Analyzer LSP")
-    (mkop "nix" pkgs.nil "Nil LSP")
+    (mkop "nix" pkgs.nixd "Nixd LSP")
     (mkop "lldb-18" pkgs.lldb_18 "LLDB 18")
     (mkop "typescript" pkgs.typescript-language-server "TLS")
   ];

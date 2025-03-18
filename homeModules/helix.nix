@@ -4,7 +4,7 @@ let
   mkop = helpers.mkListOption config "helix";
   langs = [
     (mkop "rust" {name = "rust"; auto-format = false;} "Rust in Helix")
-    (mkop "nix" {name = "nix"; auto-format = false;} "Nix in Helix")
+    (mkop "nix" {name = "nix"; auto-format = false; language-servers = ["nixd"];} "Nix in Helix")
   ];
 in {
   options = lib.recursiveUpdate (helpers.mkOptions langs) {helix.enable = lib.mkEnableOption "Helix";};

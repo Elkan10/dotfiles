@@ -68,7 +68,8 @@
     mangohud.enable = true;
   };
 
-  
+  openrgb.enable = true;
+    
   sops.defaultSopsFile = ./secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/elvis/.config/sops/age/keys.txt";
@@ -180,11 +181,7 @@
     isNormalUser = true;
     description = "Elvis";
     extraGroups = [ "networkmanager" "wheel" "input" "uinput" "audio"];
-    packages = with pkgs; [
-      kate
-    #  thunderbird
-    ];
-  };
+      };
 
     
 
@@ -202,11 +199,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
- 
-
-
-  services.hardware.openrgb.enable = true;
 
   fonts = {
     packages = with pkgs; [
