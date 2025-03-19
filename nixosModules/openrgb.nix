@@ -13,5 +13,7 @@
         port = 6742;
       };
     };
+
+    environment.systemPackages = [ (import ../derivations/scripts/openrgb_startup.nix {inherit pkgs;}) ];
   };
 }
