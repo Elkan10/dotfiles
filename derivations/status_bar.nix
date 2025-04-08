@@ -10,11 +10,11 @@ pkgs.rustPlatform.buildRustPackage {
   src = pkgs.fetchFromGitHub {
     owner = "Elkan10";
     repo = "status_bar";
-    rev = "600887750efae9c740b8ecdf4064448397182ae7";
-    sha256 = "sha256-9pNKRU1U77rOceiDvVClVDt7xQkVEJiUB7T+XEiuVVg=";
+    rev = "9ad15e670ce052b7aab82a3d80595ffb50cf5f83";
+    sha256 = "sha256-HhxcThIsZQzcOCnNxQ0FQlwSThB5aIH1I6jSG2qmmGU=";
   };
 
   useFetchCargoVendor = true;
 
-  cargoHash = "sha256-ezUKYEXqUSYMKndzVbPjMyNb276cfoyQPdj+CaV+k4I=";
+  cargoHash = "sha256-vpzK36YgWrvc5vjbFR36UymD/U1GW6Vt/xZJFdctfHk=";
 }
