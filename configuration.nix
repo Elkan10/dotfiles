@@ -7,10 +7,12 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./hardware/nvidia.nix
+      ./hardware/amd.nix
       ./nixosModules
     ];
 
+  
+  
   i18n.inputMethod = {
     type = "fcitx5";
     enable = true;
@@ -81,6 +83,16 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+
+  nixpkgs.config.allowBroken = true;
+  
+  boot = {
+    blacklistedKernelModules = [ "r8169" ];
+    extraModulePackages = with config.boot.kernelPackages; [ r8125 ];
+    kernelModules = [ "r8125" "i2c-dev" "i2c-piix4" ];
+    kernelParams = [ ];
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
