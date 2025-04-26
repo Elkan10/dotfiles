@@ -68,6 +68,7 @@
     wine.enable = true;
     protontricks.enable = true;
     mangohud.enable = true;
+    bottles.enable = true;
   };
 
   openrgb.enable = true;
