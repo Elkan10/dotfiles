@@ -8,10 +8,12 @@
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
 
-
     playit.url = "github:pedorich-n/playit-nixos-module";
 
     sops-nix.url = "github:Mic92/sops-nix";
+
+    stylix.url = "github:danth/stylix";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
   };
  outputs = {self, nixpkgs, home-manager, ...}@inputs:
   let
@@ -28,6 +30,7 @@
           inputs.nix-minecraft.nixosModules.minecraft-servers
           inputs.playit.nixosModules.default
           inputs.sops-nix.nixosModules.sops
+          inputs.stylix.nixosModules.stylix
           ({...}: {
             nix.registry = {
               main.flake = self;

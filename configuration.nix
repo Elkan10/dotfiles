@@ -10,8 +10,6 @@
       ./hardware/amd.nix
       ./nixosModules
     ];
-
-  
   
   i18n.inputMethod = {
     type = "fcitx5";
@@ -38,7 +36,7 @@
     theme-name = "sddm-astronaut-theme";
     theme = (import ./derivations/sddm-astronaut-mod.nix {
       inherit pkgs;
-      bg = (import ./derivations/images.nix {inherit pkgs;}).forest-png;
+      bg = (import ./derivations/images.nix {inherit pkgs;}).purple-red;
     });
   };
 
@@ -72,7 +70,59 @@
   };
 
   openrgb.enable = true;
-    
+
+  stylix.enable = true;
+  stylix.base16Scheme = {
+    base00 = "2e3440";
+    base01 = "383e4a";
+    base02 = "3d494f";
+    base03 = "485259";
+    base04 = "cdd1d9";
+    base05 = "d7dbe3";
+    base06 = "ebf0f6";
+    base07 = "ebf0f6";
+    base08 = "be616b";
+    base09 = "be7f6b";
+    base0A = "bea177";
+    base0B = "bed477";
+    base0C = "5c81ad";
+    base0D = "5c81c8";
+    base0E = "7e81c8";
+    base0F = "948168";
+  };
+  stylix.image = (import ./derivations/images.nix {inherit pkgs;}).purple-red;
+
+  stylix.cursor = {
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Ice";
+    size = 10;
+  };
+
+  stylix.fonts = {
+    sizes = {
+      applications = 12;
+      terminal = 15;
+      desktop = 10;
+      popups = 10;
+    };
+    monospace = {
+      package = pkgs.nerd-fonts.jetbrains-mono;
+      name = "JetBrains Mono Nerd Font Mono";
+    };
+    sansSerif = {
+      package = pkgs.dejavu_fonts;
+      name = "DejaVu Sans";
+    };
+    serif = {
+      package = pkgs.dejavu_fonts;
+      name = "DejaVu Serif";
+    };
+  };
+
+  stylix.opacity = {
+    terminal = 0.9;
+  };
+  
   sops.defaultSopsFile = ./secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/elvis/.config/sops/age/keys.txt";

@@ -9,15 +9,15 @@
       enable = true;
       settings = {
         format = lib.concatStrings [
-          "[](surface0)"
+          "[](bright-black)"
           "$os"
           "$username"
-          "[](bg:peach fg:surface0)"
+          "[](bg:blue fg:bright-black)"
           "$directory"
-          "[](fg:peach bg:green)"
+          "[](fg:blue bg:red)"
           "$git_branch"
           "$git_status"
-          "[](fg:green bg:teal)"
+          "[](fg:red bg:cyan)"
           "$c"
           "$rust"
           "$golang"
@@ -27,43 +27,14 @@
           "$kotlin"
           "$haskell"
           "$python"
-          "[](fg:blue bg:purple)"
+          "[](fg:cyan bg:purple)"
           "$time"
           "[ ](fg:purple)"
           "$line_break$character"
         ];
-        palette = "catppuccin-mocha";
-        palettes.catppuccin-mocha = {
-          rosewater = "#f5e0dc";
-          flamingo = "#f2cdcd";
-          pink = "#f5c2e7";
-          orange = "#cba6f7";
-          red = "#f38ba8";
-          maroon = "#eba0ac";
-          peach = "#fab387";
-          yellow = "#f9e2af";
-          green = "#a6e3a1";
-          teal = "#94e2d5";
-          sky = "#89dceb";
-          sapphire = "#74c7ec";
-          blue = "#89b4fa";
-          lavender = "#b4befe";
-          text = "#cdd6f4";
-          subtext1 = "#bac2de";
-          subtext0 = "#a6adc8";
-          overlay2 = "#9399b2";
-          overlay1 = "#7f849c";
-          overlay0 = "#6c7086";
-          surface2 = "#585b70";
-          surface1 = "#45475a";
-          surface0 = "#313244";
-          base = "#1e1e2e";
-          mantle = "#181825";
-          crust = "#11111b";
-        };
         os = {
           disabled = false;
-          style = "bg:surface0 fg:text";
+          style = "bg:bright-black fg:white";
         };
         os.symbols = {
           Windows = "󰍲";
@@ -89,12 +60,12 @@
         };
         username = {
           show_always = true;
-          style_user = "bg:surface0 fg:text";
-          style_root = "bg:surface0 fg:text";
+          style_user = "bg:bright-black fg:white";
+          style_root = "bg:bright-black fg:white";
           format = "[ $user ]($style)";
         };
         directory = {
-          style = "fg:mantle bg:peach";
+          style = "fg:black bg:blue";
           format = "[ $path ]($style)";
           truncation_length = 3;
           truncation_symbol = "…/";
@@ -108,72 +79,72 @@
         };
         git_branch = {
             symbol = "";
-            style = "bg:teal";
-            format = "[[ $symbol $branch ](fg:base bg:green)]($style)";
+            style = "bg:cyan";
+            format = "[[ $symbol $branch ](fg:black bg:red)]($style)";
         };
         git_status = {
-          style = "bg:teal";
-          format = "[[($all_status$ahead_behind )](fg:base bg:green)]($style)";
+          style = "bg:cyan";
+          format = "[[($all_status$ahead_behind )](fg:black bg:red)]($style)";
         };
         nodejs = {
           symbol = "";
-          style = "bg:teal";
-          format = "[[ $symbol( $version) ](fg:base bg:teal)]($style)";
+          style = "bg:cyan";
+          format = "[[ $symbol( $version) ](fg:black bg:cyan)]($style)";
         };
 
         c = {
             symbol =" ";
-            style = "bg:teal";
-            format = "[[ $symbol( $version) ](fg:base bg:teal)]($style)";
+            style = "bg:cyan";
+            format = "[[ $symbol( $version) ](fg:black bg:cyan)]($style)";
         };
 
         rust = {
           symbol = "";
-          style = "bg:teal";
-          format = "[[ $symbol( $version) ](fg:base bg:teal)]($style)";
+          style = "bg:cyan";
+          format = "[[ $symbol( $version) ](fg:black bg:cyan)]($style)";
         };
       
         golang = {
           symbol = "";
-          style = "bg:teal";
-          format = "[[ $symbol( $version) ](fg:base bg:teal)]($style)";
+          style = "bg:cyan";
+          format = "[[ $symbol( $version) ](fg:black bg:cyan)]($style)";
         };
 
         php = {
           symbol = "";
-          style = "bg:teal";
-          format = "[[ $symbol( $version) ](fg:base bg:teal)]($style)";
+          style = "bg:cyan";
+          format = "[[ $symbol( $version) ](fg:black bg:cyan)]($style)";
         };
 
         java = {
           symbol = " ";
-          style = "bg:teal";
-          format = "[[ $symbol( $version) ](fg:base bg:teal)]($style)";
+          style = "bg:cyan";
+          format = "[[ $symbol( $version) ](fg:black bg:cyan)]($style)";
         };
 
         kotlin = {
           symbol = "";
-          style = "bg:teal";
-          format = "[[ $symbol( $version) ](fg:base bg:teal)]($style)";
+          style = "bg:cyan";
+          format = "[[ $symbol( $version) ](fg:black bg:cyan)]($style)";
         };
 
         haskell = {
           symbol = "";
-          style = "bg:teal";
-          format = "[[ $symbol( $version) ](fg:base bg:teal)]($style)";
+          style = "bg:cyan";
+          format = "[[ $symbol( $version) ](fg:black bg:cyan)]($style)";
         };
 
         python = {
           symbol = "";
-          style = "bg:teal";
-          format = "[[ $symbol( $version) ](fg:base bg:teal)]($style)";
+          style = "bg:cyan";
+          format = "[[ $symbol( $version) ](fg:black bg:cyan)]($style)";
         };
 
         time = {
           disabled = false;
           time_format = "%R";
-          style = "bg:peach";
-          format = "[[   $time ](fg:mantle bg:purple)]($style)";
+          style = "bg:bright-orange";
+          format = "[[   $time ](fg:black bg:purple)]($style)";
         };
 
         line_break = {

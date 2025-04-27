@@ -15,16 +15,9 @@ in {
         language = helpers.mkList langs;
       };
       settings = {
-        theme = "autumn_transparent";
         editor = {
         	line-number = "relative";
         	lsp.display-messages = true;
-        };
-      };
-      themes = {
-        autumn_transparent = {
-          "inherits" = "autumn";
-          "ui.background" = {};
         };
       };
     };
