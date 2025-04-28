@@ -14,6 +14,8 @@
 
     stylix.url = "github:danth/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
+
+    status_bar.url = "github:Elkan10/status_bar";
   };
  outputs = {self, nixpkgs, home-manager, ...}@inputs:
   let

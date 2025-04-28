@@ -3,7 +3,24 @@
 {
   imports = [
     ./homeModules
+    inputs.status_bar.homeManagerModules.default
   ];
+
+  status_bar.enable = true;
+
+  status_bar.settings = {
+    icons = ["󰬺" "󰬻" "󰬼" "󰬽" "󰬾"];
+    width = 1920;
+    height = 50;
+    exclusive = 30;
+    cpu_label = "Tctl";
+    text_size = 30;
+    text_height = 25;
+    bg_color = "7f" + config.stylix.base16Scheme.base00;
+    text_color = "ff" + config.stylix.base16Scheme.base05;
+    selected_color = "ff" + config.stylix.base16Scheme.base0E;
+    font = "JetBrainsMono Nerd Font Mono";
+  };
 
   bash.enable = true;
   hyprland.enable = true;

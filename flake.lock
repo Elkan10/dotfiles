@@ -480,6 +480,7 @@
         "nixpkgs": "nixpkgs_2",
         "playit": "playit",
         "sops-nix": "sops-nix",
+        "status_bar": "status_bar",
         "stylix": "stylix"
       }
     },
@@ -498,6 +499,21 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "status_bar": {
+      "locked": {
+        "lastModified": 1745861235,
+        "narHash": "sha256-5dsaf2T0xmQB85WrQVwKavt2YbEfrHMsNzetDnr10iw=",
+        "owner": "Elkan10",
+        "repo": "status_bar",
+        "rev": "c8c62596455229f9ec400bf308b42feb665eaa88",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Elkan10",
+        "repo": "status_bar",
         "type": "github"
       }
     },

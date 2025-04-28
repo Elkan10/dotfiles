@@ -20,10 +20,7 @@
     ];
   };
 
-  widgets = {
-    enable = true;
-    status_bar.enable = true;
-  };
+  widgets.enable = false;
 
   playit.enable = false;
   steam.enable = true;
