@@ -9,5 +9,6 @@
     ./kitty.nix
     ./starship.nix
     ./rofi.nix
+    ./firefox.nix
   ];
 }

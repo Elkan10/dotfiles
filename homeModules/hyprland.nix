@@ -89,15 +89,21 @@
           "$mainMod, M, exit"
           "$mainMod, E, exec, $fileManager"
           "$mainMod, V, togglefloating"
+          "$mainMod, F, fullscreen, 1"
           "$mainMod, R, exec, $menu"
           "$mainMod, P, pseudo"
           "$mainMod, T, togglesplit"
-          "$mainMod SHIFT, L, exec, hyprlock"
+          "$mainMod CTRL, L, exec, hyprlock"
 
           "$mainMod, h, movefocus, l"
           "$mainMod, l, movefocus, r"
           "$mainMod, k, movefocus, u"
           "$mainMod, j, movefocus, d"
+
+          "$mainMod SHIFT, h, swapwindow, l"
+          "$mainMod SHIFT, l, swapwindow, r"
+          "$mainMod SHIFT, k, swapwindow, u"
+          "$mainMod SHIFT, j, swapwindow, d"
 
           " $mainMod SHIFT, 1, movetoworkspace, 1"
           " $mainMod SHIFT, 2, movetoworkspace, 2"

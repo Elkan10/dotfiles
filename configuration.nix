@@ -119,6 +119,7 @@
   stylix.opacity = {
     terminal = 0.9;
   };
+
   
   sops.defaultSopsFile = ./secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
@@ -130,6 +131,8 @@
  
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.editor = true;
+  boot.loader.timeout = 10;
   boot.loader.efi.canTouchEfiVariables = true;
 
 

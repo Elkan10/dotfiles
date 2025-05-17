@@ -6,12 +6,16 @@
     inputs.status_bar.homeManagerModules.default
   ];
 
+  
+  stylix.targets.firefox.profileNames = [ "default" ];
+  stylix.targets.firefox.colorTheme.enable = true;
+
   status_bar.enable = true;
 
   status_bar.settings = {
     icons = ["󰬺" "󰬻" "󰬼" "󰬽" "󰬾"];
     width = 1920;
-    height = 50;
+    height = 30;
     exclusive = 30;
     cpu_label = "Tctl";
     text_size = 30;
@@ -29,6 +33,7 @@
   starship.enable = true;
   kitty.enable = true;
   rofi.enable = true;
+  firefox.enable = true;
 
   helix = {
     enable = true;
