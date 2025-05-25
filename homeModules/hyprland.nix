@@ -13,8 +13,16 @@
         "$menu" = "rofi -show drun";
         "$mainMod" = "SUPER"; 
         monitor = [
-          ", 1920x1080@165, 0x0, 1"
-        ];    
+          "DP-1, 2560x1440@240, 0x0, 1"
+          "HDMI-A-1, 1920x1080@120, auto-left, 1"
+        ];
+        workspace = [
+          "1, monitor:DP-1, default:true"
+          "2, monitor:DP-1"
+          "3, monitor:DP-1"
+          "4, monitor:HDMI-A-1, default:true"
+          "5, monitor:HDMI-A-1"
+        ];
         exec-once = [
           "$terminal"
           "nm-applet &"
@@ -89,7 +97,7 @@
           "$mainMod, M, exit"
           "$mainMod, E, exec, $fileManager"
           "$mainMod, V, togglefloating"
-          "$mainMod, F, fullscreen, 1"
+          "$mainMod, F, fullscreen, 0"
           "$mainMod, R, exec, $menu"
           "$mainMod, P, pseudo"
           "$mainMod, T, togglesplit"

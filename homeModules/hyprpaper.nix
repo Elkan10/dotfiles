@@ -6,7 +6,7 @@
 
   config = 
   let 
-    image = (import ../derivations/images.nix {inherit pkgs;}).forest-png;
+    image = (import ../derivations/images.nix {inherit pkgs;}).purple-red;
   in 
   lib.mkIf config.hyprpaper.enable {
     services.hyprpaper = {
@@ -16,7 +16,8 @@
           "${image}"
         ];
         wallpaper = [
-          ",${image}"
+          "DP-1,${image}"
+          "HDMI-A-1, ${image}"
         ];
       };
     };

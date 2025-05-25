@@ -10,6 +10,7 @@ let
     (mkop "usbutils" pkgs.usbutils "Usb Utils")
     (mkop "coreutils" pkgs.coreutils "Core Utils")
     (mkop "neofetch" pkgs.neofetch "NeoFetch")
+    (mkop "tuxclocker" pkgs.tuxclocker "TuxClocker")
   ];
 in
 {

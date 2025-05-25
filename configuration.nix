@@ -17,6 +17,7 @@
     fcitx5.addons = with pkgs; [
       fcitx5-m17n
       fcitx5-hangul
+      fcitx5-mozc-ut
     ];
   };
 
@@ -48,6 +49,7 @@
     coreutils.enable = true;
     neofetch.enable = true;
     git.enable = true;
+    tuxclocker.enable = true;
   };
 
   lsp = {
@@ -107,13 +109,18 @@
       name = "JetBrains Mono Nerd Font Mono";
     };
     sansSerif = {
-      package = pkgs.dejavu_fonts;
-      name = "DejaVu Sans";
+      package = pkgs.iosevka;
+      name = "Iosevka Etoile";
     };
     serif = {
-      package = pkgs.dejavu_fonts;
-      name = "DejaVu Serif";
+      package = pkgs.iosevka;
+      name = "Iosevka Etoile";
     };
+  };
+
+  fonts.fontconfig = {
+    enable = true;
+    antialias = true;
   };
 
   stylix.opacity = {
