@@ -1,6 +1,7 @@
 {...}: 
 {
   imports = [
+    ./hacking.nix
     ./blender.nix
     ./playit.nix
     ./core.nix

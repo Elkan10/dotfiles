@@ -38,6 +38,19 @@
     });
   };
 
+  hacking = {
+    enable = true;
+    nmap.enable = true;
+    thc-hydra.enable = true;
+    metasploit.enable = true;
+    sqlmap.enable = true;
+    nikto.enable = true;
+    zap.enable = true;
+    dalfox.enable = true;
+    rizin.enable = true;
+    rz-ghidra.enable = true;
+  };
+
   blender.enable = true;
 
   core = {
