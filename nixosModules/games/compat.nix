@@ -6,6 +6,7 @@ let
     (mkop "mangohud" pkgs.mangohud "MangoHUD")
     (mkop "wine" pkgs.wine "Wine")
     (mkop "protontricks" pkgs.protontricks "ProtonTricks")
+    (mkop "protonup" pkgs.protonup "ProtonUp")
     (mkop "bottles" pkgs.bottles "Bottles")
   ];
 in
@@ -14,6 +15,10 @@ in
 
   config = lib.mkIf config.compat.enable {
     environment.systemPackages = helpers.mkList packages;
+
+    environment.sessionVariables = lib.mkIf config.compat.protonup.enable {
+      STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
+    };
   };
 }
  

@@ -21,6 +21,11 @@
     ];
   };
 
+  virtualisation.libvirtd = {
+    enable = true;
+  };
+  programs.virt-manager.enable = true;
+
   widgets.enable = false;
 
   playit.enable = false;
@@ -63,6 +68,7 @@
     neofetch.enable = true;
     git.enable = true;
     tuxclocker.enable = true;
+    virtiofsd.enable = true;
   };
 
   lsp = {
@@ -79,6 +85,7 @@
     protontricks.enable = true;
     mangohud.enable = true;
     bottles.enable = true;
+    protonup.enable = true;
   };
 
   openrgb.enable = true;
@@ -263,8 +270,8 @@
   users.users.elvis = {
     isNormalUser = true;
     description = "Elvis";
-    extraGroups = [ "networkmanager" "wheel" "input" "uinput" "audio"];
-      };
+    extraGroups = [ "networkmanager" "wheel" "input" "uinput" "audio" "libvirtd" ];
+  };
 
     
 
@@ -290,7 +297,7 @@
   };
 
   services.kanata = {
-    enable = true;
+    enable = false;
     keyboards = {
       main = {
         config = ''

@@ -11,6 +11,7 @@ let
     (mkop "coreutils" pkgs.coreutils "Core Utils")
     (mkop "neofetch" pkgs.neofetch "NeoFetch")
     (mkop "tuxclocker" pkgs.tuxclocker "TuxClocker")
+    (mkop "virtiofsd" pkgs.virtiofsd "VirtIO FSD")
   ];
 in
 {
