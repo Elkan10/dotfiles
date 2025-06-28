@@ -7,8 +7,10 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./hardware/amd.nix
-      ./nixosModules
+      ./../../hardware/amd.nix
+      inputs.home-manager.nixosModules.home-manager
+      inputs.sops-nix.nixosModules.default
+      inputs.stylix.nixosModules.stylix
     ];
   
   i18n.inputMethod = {
@@ -26,20 +28,19 @@
   };
   programs.virt-manager.enable = true;
 
-  widgets.enable = false;
 
   playit.enable = false;
   steam.enable = true;
   heroicgl.enable = true;
   prismlauncher.enable = true;
   vesktop.enable = true;
-  mcservers.enable = true;
+  mcservers.enable = false;
   sddm-qt6-wl = {
     enable = true;
     theme-name = "sddm-astronaut-theme";
-    theme = (import ./derivations/sddm-astronaut-mod.nix {
+    theme = (import ./../../derivations/sddm-astronaut-mod.nix {
       inherit pkgs;
-      bg = (import ./derivations/images.nix {inherit pkgs;}).purple-red;
+      bg = (import ./../../derivations/images.nix {inherit pkgs;}).purple-red;
     });
   };
 
@@ -109,7 +110,7 @@
     base0E = "7e81c8";
     base0F = "948168";
   };
-  stylix.image = (import ./derivations/images.nix {inherit pkgs;}).purple-red;
+  stylix.image = (import ./../../derivations/images.nix {inherit pkgs;}).purple-red;
 
   stylix.cursor = {
     package = pkgs.bibata-cursors;
@@ -148,7 +149,7 @@
   };
 
   
-  sops.defaultSopsFile = ./secrets/secrets.yaml;
+  sops.defaultSopsFile = ./../../secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/elvis/.config/sops/age/keys.txt";
 
@@ -230,7 +231,12 @@
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
     users = {
-      "elvis" = import ./home.nix;
+      "elvis" = {
+        imports = [
+          ./home.nix
+          inputs.self.outputs.homeManagerModules.default
+        ];
+      };
     };
   };
 

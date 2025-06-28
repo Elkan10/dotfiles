@@ -4,9 +4,7 @@
     hardware.graphics.enable = true;
     hardware.graphics.enable32Bit = true;
 
-    boot.kernelParams = [
-      "nvida.NVreg_EnableGpuFirmware=0"
-    ];
+    boot.kernelParams = [ ];
 
     services.xserver.videoDrivers = ["amdgpu"];
 

@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./homeModules
     inputs.status_bar.homeManagerModules.default
   ];
 

@@ -1,5 +1,8 @@
-{config, lib, ...}:
+{inputs, config, lib, ...}:
 {
+  imports = [
+    inputs.playit.nixosModules.default
+  ];
   options = {
     playit.enable = lib.mkEnableOption "Enables playit";
   };
