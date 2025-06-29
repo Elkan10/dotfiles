@@ -8,6 +8,7 @@ let
     (mkop "protontricks" pkgs.protontricks "ProtonTricks")
     (mkop "protonup" pkgs.protonup "ProtonUp")
     (mkop "bottles" pkgs.bottles "Bottles")
+    (mkop "lact" pkgs.lact "LACT")
   ];
 in
 {
@@ -15,6 +16,9 @@ in
 
   config = lib.mkIf config.compat.enable {
     environment.systemPackages = helpers.mkList packages;
+
+    systemd.packages = lib.mkIf config.compat.lact.enable [ pkgs.lact ];
+    systemd.services.lactd.wantedBy = lib.mkIf config.compat.lact.enable [ "multi-user.target" ];
 
     environment.sessionVariables = lib.mkIf config.compat.protonup.enable {
       STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";

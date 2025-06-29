@@ -87,6 +87,7 @@
     mangohud.enable = true;
     bottles.enable = true;
     protonup.enable = true;
+    lact.enable = true;
   };
 
   openrgb.enable = true;
@@ -170,7 +171,7 @@
     blacklistedKernelModules = [ "r8169" ];
     extraModulePackages = with config.boot.kernelPackages; [ r8125 ];
     kernelModules = [ "r8125" "i2c-dev" "i2c-piix4" ];
-    kernelParams = [ ];
+    kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ];
   };
 
   networking.hostName = "nixos"; # Define your hostname.
