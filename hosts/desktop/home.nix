@@ -5,6 +5,8 @@
     inputs.status_bar.homeManagerModules.default
   ];
 
+  programs.alacritty.enable = true;
+
   
   stylix.targets.firefox.profileNames = [ "default" ];
   stylix.targets.firefox.colorTheme.enable = true;

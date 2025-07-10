@@ -46,15 +46,23 @@
 
   hacking = {
     enable = true;
+    openvpn.enable = true;
     nmap.enable = true;
+    whatweb.enable = true;
+    amass.enable = true;
+    gobuster.enable = true;
+    gospider.enable = true;
+    dirb.enable = true;
+    ffuf.enable = true;
+    enum4linux.enable = true;
+    netexec.enable = true;
     thc-hydra.enable = true;
+    john.enable = true;
+    hashcat.enable = true;
     metasploit.enable = true;
     sqlmap.enable = true;
     nikto.enable = true;
-    zap.enable = true;
-    dalfox.enable = true;
-    rizin.enable = true;
-    rz-ghidra.enable = true;
+    mitmproxy.enable = true;
   };
 
   blender.enable = true;
@@ -174,7 +182,7 @@
     kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ];
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "desktop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -292,6 +300,7 @@
     MOZ_ENABLE_WAYLAND = 0;
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
+    EDITOR = "hx";
   };
 
   # Allow unfree packages

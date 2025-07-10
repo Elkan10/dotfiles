@@ -8,7 +8,7 @@
     wayland.windowManager.hyprland = {
       enable = true;
       settings = {
-        "$terminal" = "kitty";
+        "$terminal" = "alacritty";
         "$fileManager" = "dolphin";
         "$menu" = "rofi -show drun";
         "$mainMod" = "SUPER"; 

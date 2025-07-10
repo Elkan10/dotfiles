@@ -1,7 +1,7 @@
 {config, lib, ...}:
 let
   helpers = import ./../lib/helpers.nix {inherit lib;};
-  mkop = helpers.mkListOption config "helix";
+  mkop = helpers.mkListOption "helix";
   langs = [
     (mkop "rust" {name = "rust"; auto-format = false;} "Rust in Helix")
     (mkop "nix" {name = "nix"; auto-format = false; language-servers = ["nixd"];} "Nix in Helix")
@@ -12,7 +12,7 @@ in {
     programs.helix = {
       enable = true;
       languages = {
-        language = helpers.mkList langs;
+        language = helpers.mkList langs {};
       };
       settings = {
         editor = {

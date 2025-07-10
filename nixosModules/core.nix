@@ -1,7 +1,7 @@
 {pkgs, config, lib, ...}:
 let
   helpers = import ./../lib/helpers.nix {inherit lib;};
-  mkop = helpers.mkListOption config "core";
+  mkop = helpers.mkListOption "core";
   packages = [
     (mkop "git" pkgs.git "Git")
     (mkop "htop" pkgs.htop "Htop")
@@ -19,6 +19,6 @@ in
 
     
   config = {
-    environment.systemPackages = helpers.mkList packages;
+    environment.systemPackages = helpers.mkList packages config;
   };
 }

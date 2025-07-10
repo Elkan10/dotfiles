@@ -1,7 +1,7 @@
 {config, lib, pkgs, ...}: 
 let
   helpers = import ./../../lib/helpers.nix {inherit lib;};
-  mkop = helpers.mkListOption config "compat";
+  mkop = helpers.mkListOption "compat";
   packages = [
     (mkop "mangohud" pkgs.mangohud "MangoHUD")
     (mkop "wine" pkgs.wine "Wine")
@@ -15,7 +15,7 @@ in
   options = lib.attrsets.recursiveUpdate (helpers.mkOptions packages) {compat.enable = lib.mkEnableOption "Game Compatibility Programs";};
 
   config = lib.mkIf config.compat.enable {
-    environment.systemPackages = helpers.mkList packages;
+    environment.systemPackages = helpers.mkList packages config;
 
     systemd.packages = lib.mkIf config.compat.lact.enable [ pkgs.lact ];
     systemd.services.lactd.wantedBy = lib.mkIf config.compat.lact.enable [ "multi-user.target" ];

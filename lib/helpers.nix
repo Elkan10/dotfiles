@@ -1,10 +1,7 @@
 {lib}: {
-  mkListOption = config: namespace: name: pkg: description: {
+  mkListOption = namespace: name: pkg: description: {
     option = lib.mkEnableOption description;
-    package = lib.lists.optional (
-        lib.attrsets.hasAttrByPath [namespace name "enable"] config &&
-        lib.attrsets.getAttrFromPath [namespace name "enable"] config
-    ) pkg;
+    package = pkg;
     name = name;
     namespace = namespace;
     traceOption = builtins.trace "Option created for ${namespace}.${name}: ${description}" name;  
@@ -15,5 +12,13 @@
       ${opt.namespace}.${opt.name}.enable = opt.option;
     }) packages);
 
-  mkList = packages: builtins.concatMap (opt: opt.package) packages;
+  mkList = packages: config: builtins.filter (pkg: pkg != null)
+    (map (opt: if (
+          lib.attrsets.hasAttrByPath [opt.namespace opt.name "enable"] config &&
+          lib.attrsets.getAttrFromPath [opt.namespace opt.name "enable"] config
+        )
+          then opt.package
+          else null
+        )
+    packages);
 }
