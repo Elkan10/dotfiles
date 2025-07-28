@@ -14,7 +14,7 @@
     (mkop "ffuf" pkgs.ffuf "FFUF")
     # enumeration
     (mkop "enum4linux" pkgs.enum4linux "Enum4Linux")
-    (mkop "netexec" (pkgs.netexec.override { python3 = pkgs.python311; }) "NetExec")
+    (mkop "netexec" (pkgs.netexec.override { python312 = pkgs.python312; }) "NetExec")
     # crackers
     (mkop "thc-hydra" pkgs.thc-hydra "Hydra")
     (mkop "john" pkgs.john "John The Ripper")
