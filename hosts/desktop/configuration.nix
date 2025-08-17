@@ -165,6 +165,14 @@
   sops.secrets."playit_key" = {
     owner = lib.mkIf config.playit.enable "playit";
   };
+
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+        starship init fish | source
+        enable_transience
+      '';
+  };
  
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -286,6 +294,7 @@
     isNormalUser = true;
     description = "Elvis";
     extraGroups = [ "networkmanager" "wheel" "input" "uinput" "audio" "libvirtd" ];
+    shell = pkgs.fish;
   };
 
     

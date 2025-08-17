@@ -12,7 +12,7 @@
         ll = "ls -l";
         ".." = "cd ..";
       };
-      bashrcExtra = lib.mkIf config.starship.enable "eval $(starship init bash)"; 
+      bashrcExtra = lib.mkIf config.starship.enable "eval $(starship init bash)";
     };
   };
 }
