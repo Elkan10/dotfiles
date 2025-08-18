@@ -9,7 +9,7 @@
       enable = true;
       settings = {
         "$terminal" = "alacritty";
-        "$fileManager" = "dolphin";
+        "$fileManager" = "yazi";
         "$menu" = "rofi -show drun";
         "$mainMod" = "SUPER"; 
         monitor = [

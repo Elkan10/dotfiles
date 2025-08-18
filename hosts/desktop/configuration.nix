@@ -78,6 +78,7 @@
     git.enable = true;
     tuxclocker.enable = true;
     virtiofsd.enable = true;
+    yazi.enable = true;
   };
 
   lsp = {
