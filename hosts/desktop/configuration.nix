@@ -11,6 +11,7 @@
       inputs.home-manager.nixosModules.home-manager
       inputs.sops-nix.nixosModules.default
       inputs.stylix.nixosModules.stylix
+      inputs.nix-minecraft.nixosModules.minecraft-servers
     ];
   
   i18n.inputMethod = {
@@ -32,12 +33,12 @@
   core.handbrake.enable = true;
 
 
-  playit.enable = false;
+  playit.enable = true;
   steam.enable = true;
   heroicgl.enable = true;
   prismlauncher.enable = true;
   vesktop.enable = true;
-  mcservers.enable = false;
+  mcservers.enable = true;
   sddm-qt6-wl = {
     enable = true;
     theme-name = "sddm-astronaut-theme";
