@@ -10,5 +10,6 @@
     ./starship.nix
     ./rofi.nix
     ./firefox.nix
+    ./swww.nix
   ];
 }

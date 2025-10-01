@@ -13,6 +13,7 @@ let
     (mkop "tuxclocker" pkgs.tuxclocker "TuxClocker")
     (mkop "virtiofsd" pkgs.virtiofsd "VirtIO FSD")
     (mkop "yazi" pkgs.yazi "Yazi")
+    (mkop "handbrake" pkgs.handbrake "HandBrake")
   ];
 in
 {

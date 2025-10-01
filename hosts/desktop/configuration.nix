@@ -29,6 +29,9 @@
   programs.virt-manager.enable = true;
 
 
+  core.handbrake.enable = true;
+
+
   playit.enable = false;
   steam.enable = true;
   heroicgl.enable = true;

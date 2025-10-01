@@ -5,6 +5,7 @@
   };
   
   config = lib.mkIf config.hyprland.enable {
+    services.hyprpaper.enable = lib.mkForce false;
     wayland.windowManager.hyprland = {
       enable = true;
       settings = {

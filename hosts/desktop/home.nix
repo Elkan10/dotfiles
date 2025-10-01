@@ -7,6 +7,7 @@
 
   programs.alacritty.enable = true;
 
+
   
   stylix.targets.firefox.profileNames = [ "default" ];
   stylix.targets.firefox.colorTheme.enable = true;
@@ -30,7 +31,7 @@
   bash.enable = true;
   hyprland.enable = true;
   hyprlock.enable = true;
-  hyprpaper.enable = true;
+  swww.enable = true;
   starship.enable = true;
   kitty.enable = true;
   rofi.enable = true;
