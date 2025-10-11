@@ -13,7 +13,7 @@
       eula = true;
       servers.fabric-server = {
         enable = true;
-        package = pkgs.fabricServers.fabric-1_21_8;
+        package = pkgs.fabricServers.fabric-1_21_9;
         autoStart = true;
         openFirewall = false;
 
@@ -59,14 +59,14 @@
             region-file-compression="deflate";
             require-resource-pack=false;
             server-port=25565;
-            simulation-distance=5;
+            simulation-distance=12;
             spawn-animals=true;
             spawn-monsters=true;
             spawn-npcs=true;
             spawn-protection=0;
             sync-chunk-writes=true;
             use-native-transport=true;
-            view-distance=5;
+            view-distance=12;
             white-list=true;
         };
 
@@ -100,6 +100,10 @@
               {
                 uuid = "384dc6da-8f53-4b8c-aa4b-ef0797388f01";
                 name = "Boneless_Burito";
+              }
+              {
+                uuid="00000000-0000-0000-0009-01f6d46189b4";
+                name=".CHEST3037";
               }
           ];
 
@@ -162,38 +166,40 @@
         symlinks = {
             "mods" = pkgs.linkFarm "mods" [
               {
-                name = "fabric-api-0.113.14+1.21.9.jar"; 
+                name = "fabric-api-0.134.0+1.21.9.jar"; 
                 path = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/CF23l2iP/fabric-api-0.133.4%2B1.21.8.jar";
-                  sha512 = "e3cc9f8f60d655c916b2d31ca2a77fc15187e443e3bb8a5977dcff7a704401e8a39d633e12a649207a5923e540b6474e90f08c95655d07ae1c790d5c8aff41a5";
-                  name = "fabric-api-0.113.14+1.21.9.jar";
+                  url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/iHrvVvaM/fabric-api-0.134.0%2B1.21.9.jar";
+                  sha512 = "6f2c8d7aa311b90af2d80a4a9de18f22e3a19ebe22cf115278eabd3d397725bc706e98827c9eed20f9d751d4701e1da1cdf7258b90f77e65148a7a0133a1e336";
                 };
               }
               {
                 name = "Geyser-Fabric.jar";
                 path = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/wKkoqHrH/versions/MdePNaSY/geyser-fabric-Geyser-Fabric-2.8.4-b944.jar";
-                  sha512 = "70fa913a97ef9645bf7bf2797a2315f31399a458f30210b28233e1bb93fe9a502eb7fc65c54ddf8ebd4d0379a65dd75842217fe5904f37b11d5f600f0cdb8687";
-                  name = "Geyser-Fabric.jar";
+                  url = "https://cdn.modrinth.com/data/wKkoqHrH/versions/XGxt5MUN/geyser-fabric-Geyser-Fabric-2.9.0-b949.jar";
+                  sha512 = "456ca2567b3c08e0f628e210b0344d9dbdc514758751cca80f8b6996d78433d765334828e8291b72273c6452840b9dd6f8411d8f00f90c21595d84887db1a184";
                 };
               }
               {
-                name = "Floodgate-Fabric-2.2.5-b45.jar";
+                name = "Floodgate-Fabric-2.2.6-b49.jar";
                 path = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/bWrNNfkb/versions/ps3IuRel/Floodgate-Fabric-2.2.5-b45.jar";
-                  sha512 = "eebd599f805cb0b090c5a917e0618509cc9e41161581e0f2240596e3d6c841e66ad6b37bc8140a651ca15eef37db52489c1431e022f7efafd13523b64ec92045";  
-                  name="Floodgate-Fabric-2.2.5-b45.jar";
+                  url = "https://cdn.modrinth.com/data/bWrNNfkb/versions/9LkTMF9C/Floodgate-Fabric-2.2.6-b49.jar";
+                  sha512 = "88d118d309372689de4c90ba7d94d4d11b2536a62ed269d37dba39641ddd6bc7924ec3735d1ee59838cdc5923f1c83153208113fa12e9051cc75626f15e13e6f";
                 };
               }
               {
-                name = "servercore-fabric-1.5.14+1.21.8.jar";
-                path = pkgs.fetchurl { 
-                  url = "https://cdn.modrinth.com/data/4WWQxlQP/versions/CdJJdZ39/servercore-fabric-1.5.14%2B1.21.8.jar"; 
-                  sha512 = "59607b7a078bc13a8c984938108f251456160ca1eaebce9fc20b69aacbf4a64ff8bfc9e30920311a3ad3988c172a59eee690df9d81d05c8e2128b0234b524a98";
-                  name = "servercore-fabric-1.5.14+1.21.8.jar";
+                name = "servercore-fabric-1.5.14+1.21.9.jar";
+                path = pkgs.fetchurl {
+                  url = "https://cdn.modrinth.com/data/4WWQxlQP/versions/TTQGy6U8/servercore-fabric-1.5.14%2B1.21.9.jar";
+                  sha512 = "d6113cedae8d0852c7341d8bb016732b03cea2d3729cb9140549bde6004aee1dd48634e16b3727b8cd4e8d101675672e43e6cc205958b4b41d4658ab3eb69b12";
                 };
               }
-            
+              {
+                name = "lithium-fabric-0.19.1+1.21.9.jar";
+                path = pkgs.fetchurl {
+                  url = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/iMuOZwcu/lithium-fabric-0.19.1%2Bmc1.21.9.jar";
+                  sha512 = "227ecc2c420673c687dba45d6d9aed1791ec03e5979ea4c2940e9c278721ee1b36f6ef0d3efa16c49b02b17a7341848a5e1b5c07c18c2164edb01eb975d16c31";
+                };
+              }
             ];
         };
       };
