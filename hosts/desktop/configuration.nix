@@ -83,6 +83,7 @@
     tuxclocker.enable = true;
     virtiofsd.enable = true;
     yazi.enable = true;
+    any-nix-shell.enable = true;
   };
 
   lsp = {
@@ -174,6 +175,7 @@
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
+        any-nix-shell fish --info-right | source
         starship init fish | source
         enable_transience
       '';

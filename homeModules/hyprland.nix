@@ -89,9 +89,6 @@
             natural_scroll = false;  
           };
         };
-        gestures = {
-          workspace_swipe = false;
-        };
         bind = [
           "$mainMod, Q, exec, $terminal"
           "$mainMod, C, killactive"

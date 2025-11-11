@@ -27,7 +27,7 @@
             broadcast-console-to-ops=true;
             broadcast-rcon-to-ops=true;
             debug=false;
-            difficulty="normal";
+            difficulty="hard";
             enable-command-block=false;
             enable-jmx-monitoring=false;
             enable-query=false;
@@ -105,6 +105,10 @@
                 uuid="00000000-0000-0000-0009-01f6d46189b4";
                 name=".CHEST3037";
               }
+              {
+                uuid="00000000-0000-0000-0009-01f3aa544d48";
+                name=".LogisticCoder54";
+              }
           ];
 
         
@@ -175,8 +179,8 @@
               {
                 name = "Geyser-Fabric.jar";
                 path = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/wKkoqHrH/versions/XGxt5MUN/geyser-fabric-Geyser-Fabric-2.9.0-b949.jar";
-                  sha512 = "456ca2567b3c08e0f628e210b0344d9dbdc514758751cca80f8b6996d78433d765334828e8291b72273c6452840b9dd6f8411d8f00f90c21595d84887db1a184";
+                  url = "https://cdn.modrinth.com/data/wKkoqHrH/versions/AvppCvNj/geyser-fabric-Geyser-Fabric-2.9.0-b971.jar";
+                  sha512 = "7de956ebebd24283c01f8c36f0e86f58cddd92fb068e8068df9ef8bbfe82a685e40e07b9c72efa7092449d056c5d7a95db05657764d0a1fb0e264f7abb3ea18d";
                 };
               }
               {

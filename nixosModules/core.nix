@@ -14,6 +14,7 @@ let
     (mkop "virtiofsd" pkgs.virtiofsd "VirtIO FSD")
     (mkop "yazi" pkgs.yazi "Yazi")
     (mkop "handbrake" pkgs.handbrake "HandBrake")
+    (mkop "any-nix-shell" pkgs.any-nix-shell "Any Nix Shell")
   ];
 in
 {
