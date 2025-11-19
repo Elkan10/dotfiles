@@ -6,7 +6,7 @@ let
     (mkop "mangohud" pkgs.mangohud "MangoHUD")
     (mkop "wine" pkgs.wine "Wine")
     (mkop "protontricks" pkgs.protontricks "ProtonTricks")
-    (mkop "protonup" pkgs.protonup "ProtonUp")
+    (mkop "protonup" pkgs.protonup-ng "ProtonUp")
     (mkop "bottles" pkgs.bottles "Bottles")
     (mkop "lact" pkgs.lact "LACT")
   ];
