@@ -1,6 +1,6 @@
 {config,  lib, ...}: {
   options = {
-    firefox.enable = lib.mkEnableOption "Rofi";
+    firefox.enable = lib.mkEnableOption "Firefox";
   };
 
   config = lib.mkIf config.firefox.enable {
