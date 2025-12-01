@@ -9,7 +9,7 @@
     nixpkgs.overlays = [ inputs.nix-minecraft.overlay ]; 
     # Minecraft
     services.minecraft-servers = {
-      enable = true;
+      enable = false;
       eula = true;
       servers.fabric-server = {
         enable = true;
