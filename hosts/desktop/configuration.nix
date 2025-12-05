@@ -1,18 +1,13 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+{pkgs, config, self, ...}: {
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nixpkgs.config.allowUnfree = true;
 
-{ config, pkgs, inputs, lib, ... }:
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./../../hardware/amd.nix
-      inputs.home-manager.nixosModules.home-manager
-      inputs.sops-nix.nixosModules.default
-      inputs.stylix.nixosModules.stylix
-      inputs.nix-minecraft.nixosModules.minecraft-servers
-    ];
+  services.displayManager.ly.enable = true;
+  
+  programs.hyprland = {
+    enable = true;
+    package = self.packages.${pkgs.system}.hyprland-wrapped;
+  };
   
   i18n.inputMethod = {
     type = "fcitx5";
@@ -24,153 +19,29 @@
     ];
   };
 
-  virtualisation.libvirtd = {
-    enable = true;
-  };
-  programs.virt-manager.enable = true;
+  environment.systemPackages = with pkgs; [
+    git
+    htop
+    libnotify
+    wl-clipboard
+    usbutils
+    coreutils
+    neofetch
+    yazi
+    any-nix-shell
 
+    steam
+    prismlauncher
+    vesktop
 
-  core.handbrake.enable = true;
-
-
-  playit.enable = true;
-  steam.enable = true;
-  heroicgl.enable = true;
-  prismlauncher.enable = true;
-  vesktop.enable = true;
-  mcservers.enable = true;
-  sddm-qt6-wl = {
-    enable = true;
-    theme-name = "sddm-astronaut-theme";
-    theme = (import ./../../derivations/sddm-astronaut-mod.nix {
-      inherit pkgs;
-      bg = (import ./../../derivations/images.nix {inherit pkgs;}).purple-red;
-    });
-  };
-
-  hacking = {
-    enable = true;
-    openvpn.enable = true;
-    nmap.enable = true;
-    whatweb.enable = true;
-    amass.enable = true;
-    gobuster.enable = true;
-    gospider.enable = true;
-    dirb.enable = true;
-    ffuf.enable = true;
-    enum4linux.enable = true;
-    netexec.enable = true;
-    thc-hydra.enable = true;
-    john.enable = true;
-    hashcat.enable = true;
-    metasploit.enable = true;
-    sqlmap.enable = true;
-    nikto.enable = true;
-    mitmproxy.enable = true;
-  };
-
-  blender.enable = true;
-
-  core = {
-    enable = true;
-    htop.enable = true;
-    libnotify.enable = true;
-    wl-clipboard.enable = true;
-    usbutils.enable = true;
-    coreutils.enable = true;
-    neofetch.enable = true;
-    git.enable = true;
-    tuxclocker.enable = true;
-    virtiofsd.enable = true;
-    yazi.enable = true;
-    any-nix-shell.enable = true;
-  };
-
-  lsp = {
-    enable = true;
-    rust.enable = true;
-    nix.enable = true;
-    lldb-18.enable = true;
-    typescript.enable = true;
-  };
-
-  compat = {
-    enable = true;
-    wine.enable = true;
-    protontricks.enable = true;
-    mangohud.enable = true;
-    bottles.enable = true;
-    protonup.enable = true;
-    lact.enable = true;
-  };
-
-  openrgb.enable = true;
-
-  stylix.enable = true;
-  stylix.base16Scheme = {
-    base00 = "2e3440";
-    base01 = "383e4a";
-    base02 = "3d494f";
-    base03 = "485259";
-    base04 = "cdd1d9";
-    base05 = "d7dbe3";
-    base06 = "ebf0f6";
-    base07 = "ebf0f6";
-    base08 = "be616b";
-    base09 = "be7f6b";
-    base0A = "bea177";
-    base0B = "bed477";
-    base0C = "5c81ad";
-    base0D = "5c81c8";
-    base0E = "7e81c8";
-    base0F = "948168";
-  };
-  stylix.image = (import ./../../derivations/images.nix {inherit pkgs;}).purple-red;
-
-  stylix.cursor = {
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Ice";
-    size = 10;
-  };
-
-  stylix.fonts = {
-    sizes = {
-      applications = 12;
-      terminal = 15;
-      desktop = 10;
-      popups = 10;
-    };
-    monospace = {
-      package = pkgs.nerd-fonts.jetbrains-mono;
-      name = "JetBrains Mono Nerd Font Mono";
-    };
-    sansSerif = {
-      package = pkgs.iosevka;
-      name = "Iosevka Etoile";
-    };
-    serif = {
-      package = pkgs.iosevka;
-      name = "Iosevka Etoile";
-    };
-  };
-
-  fonts.fontconfig = {
-    enable = true;
-    antialias = true;
-  };
-
-  stylix.opacity = {
-    terminal = 0.9;
-  };
-
-  
-  sops.defaultSopsFile = ./../../secrets/secrets.yaml;
-  sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = "/home/elvis/.config/sops/age/keys.txt";
-
-  sops.secrets."playit_key" = {
-    owner = lib.mkIf config.playit.enable "playit";
-  };
+    rust-analyzer
+    lldb_18
+    nixd
+  ] ++ (with self.packages.${pkgs.system}; [
+    firefox-jailed
+    helix-wrapped
+    starship-wrapped
+  ]);
 
   programs.fish = {
     enable = true;
@@ -180,43 +51,30 @@
         enable_transience
       '';
   };
- 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.editor = true;
+
+  boot.loader.grub = {
+    enable = true;
+    efiSupport = true;
+    device = "nodev";
+  };
   boot.loader.timeout = 10;
   boot.loader.efi.canTouchEfiVariables = true;
 
-
-  nixpkgs.config.allowBroken = true;
-  
   boot = {
     blacklistedKernelModules = [ "r8169" ];
-    extraModulePackages = with config.boot.kernelPackages; [ r8125 ];
+    extraModulePackages = [ config.boot.kernelPackages.r8125 ];
     kernelModules = [ "r8125" "i2c-dev" "i2c-piix4" ];
-    kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ];
+    kernelParams = [
+      "amdgpu.ppfeaturemask=0xffffffff"
+      "fbcon=map:1"
+    ];
   };
 
-  networking.hostName = "desktop"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
+  networking.hostName = "desktop";
   networking.networkmanager.enable = true;
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  #Open port for minecraft and peacock/http
-  networking.firewall.allowedTCPPorts = [25565 19132 80 53];
-  networking.firewall.allowedUDPPorts = [25655 19132 80 53];
-
-  # Set your time zone.
   time.timeZone = "Europe/Stockholm";
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -231,40 +89,13 @@
     LC_TIME = "sv_SE.UTF-8";
   };
 
-  services.displayManager.sddm.theme = "sddm-astronaut-theme";
-
-  
-  
-
-  # Configure keymap in X11
   services.xserver = {
     xkb.layout = "se";
     xkb.variant = "";
   };
 
-  systemd.sleep.extraConfig = /*lua*/ ''
-    AllowSuspend=no
-    AllowHibernation=no
-    AllowHybridSleep=no
-    AllowSuspendThenHibernate=no
-  '';
-
-  # Configure console keymap
   console.keyMap = "sv-latin1";
 
-  home-manager = {
-    extraSpecialArgs = {inherit inputs;};
-    users = {
-      "elvis" = {
-        imports = [
-          ./home.nix
-          inputs.self.outputs.homeManagerModules.default
-        ];
-      };
-    };
-  };
-
-  # Enable CUPS to print documents.
   services.printing.enable = true;
 
   services.avahi = {
@@ -273,101 +104,40 @@
     openFirewall = true;
   };
 
-  # Enable sound with pipewire.
   hardware.enableAllFirmware = true;
-  services.pulseaudio = {
-    enable = false;
-    support32Bit = true;
-  };
   security.rtkit.enable = true;
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
     jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
     wireplumber.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  
   users.users.elvis = {
     isNormalUser = true;
     description = "Elvis";
-    extraGroups = [ "networkmanager" "wheel" "input" "uinput" "audio" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" "input" "uinput" "audio" ];
     shell = pkgs.fish;
   };
 
-    
-
-  # Install firefox.
-  programs.firefox.enable = true;
-
-  programs.hyprland.enable = true;
-  
-  
-  environment.sessionVariables = rec {
+  environment.sessionVariables = {
     MOZ_ENABLE_WAYLAND = 0;
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
     EDITOR = "hx";
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
-  fonts = {
-    packages = with pkgs; [
-      nerd-fonts.jetbrains-mono
-    ];
-  };
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
+  
 
-  services.kanata = {
-    enable = false;
-    keyboards = {
-      main = {
-        config = ''
-          (defsrc 
-            caps)
-          (deflayermap (default-layer)
-            caps esc
-          )
-        '';    
-      };
-    };
-  };
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  # TODO: services.displayManager, hyprland
 
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
-
+  system.stateVersion = "23.11";
 }
-

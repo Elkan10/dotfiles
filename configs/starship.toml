@@ -1,0 +1,161 @@
+format = "[](bright-black)$os$username[](bg:blue fg:bright-black)$directory[](fg:blue bg:red)$git_branch$git_status[](fg:red bg:cyan)$c$rust$golang$nodejs$php$java$kotlin$haskell$python[](fg:cyan bg:purple)$time[ ](fg:purple)$line_break$character"
+palette = "base16"
+
+[c]
+format = "[[ $symbol( $version) ](fg:black bg:cyan)]($style)"
+style = "bg:cyan"
+symbol = " "
+
+[character]
+disabled = false
+error_symbol = "[](bold fg:red)"
+success_symbol = "[](bold fg:green)"
+
+[directory]
+format = "[ $path ]($style)"
+style = "fg:black bg:blue"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+Developer = "󰲋 "
+Documents = "󰈙 "
+Downloads = " "
+Music = "󰝚 "
+Pictures = " "
+
+[git_branch]
+format = "[[ $symbol $branch ](fg:black bg:red)]($style)"
+style = "bg:cyan"
+symbol = ""
+
+[git_status]
+format = "[[($all_status$ahead_behind )](fg:black bg:red)]($style)"
+style = "bg:cyan"
+
+[golang]
+format = "[[ $symbol( $version) ](fg:black bg:cyan)]($style)"
+style = "bg:cyan"
+symbol = ""
+
+[haskell]
+format = "[[ $symbol( $version) ](fg:black bg:cyan)]($style)"
+style = "bg:cyan"
+symbol = ""
+
+[java]
+format = "[[ $symbol( $version) ](fg:black bg:cyan)]($style)"
+style = "bg:cyan"
+symbol = " "
+
+[kotlin]
+format = "[[ $symbol( $version) ](fg:black bg:cyan)]($style)"
+style = "bg:cyan"
+symbol = ""
+
+[line_break]
+disabled = false
+
+[nodejs]
+format = "[[ $symbol( $version) ](fg:black bg:cyan)]($style)"
+style = "bg:cyan"
+symbol = ""
+
+[os]
+disabled = false
+style = "bg:bright-black fg:white"
+
+[os.symbols]
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Fedora = "󰣛"
+Gentoo = "󰣨"
+Linux = "󰌽"
+Macos = ""
+Manjaro = ""
+Mint = "󰣭"
+NixOS = ""
+Raspbian = "󰐿"
+RedHatEnterprise = "󱄛"
+Redhat = "󱄛"
+SUSE = ""
+Ubuntu = "󰕈"
+Windows = "󰍲"
+
+[palettes.base16]
+base00 = "#2e3440"
+base01 = "#383e4a"
+base02 = "#3d494f"
+base03 = "#485259"
+base04 = "#cdd1d9"
+base05 = "#d7dbe3"
+base06 = "#ebf0f6"
+base07 = "#ebf0f6"
+base08 = "#be616b"
+base09 = "#be7f6b"
+base0A = "#bea177"
+base0B = "#bed477"
+base0C = "#5c81ad"
+base0D = "#5c81c8"
+base0E = "#7e81c8"
+base0F = "#948168"
+base10 = "#2e3440"
+base11 = "#2e3440"
+base12 = "#be616b"
+base13 = "#bea177"
+base14 = "#bed477"
+base15 = "#5c81ad"
+base16 = "#5c81c8"
+base17 = "#7e81c8"
+black = "#2e3440"
+blue = "#5c81c8"
+bright-black = "#485259"
+bright-blue = "#5c81c8"
+bright-cyan = "#5c81ad"
+bright-green = "#bed477"
+bright-magenta = "#7e81c8"
+bright-purple = "#7e81c8"
+bright-red = "#be616b"
+bright-white = "#ebf0f6"
+bright-yellow = "#bea177"
+brown = "#948168"
+cyan = "#5c81ad"
+green = "#bed477"
+magenta = "#7e81c8"
+orange = "#be7f6b"
+purple = "#7e81c8"
+red = "#be616b"
+white = "#d7dbe3"
+yellow = "#bea177"
+
+[php]
+format = "[[ $symbol( $version) ](fg:black bg:cyan)]($style)"
+style = "bg:cyan"
+symbol = ""
+
+[python]
+format = "[[ $symbol( $version) ](fg:black bg:cyan)]($style)"
+style = "bg:cyan"
+symbol = ""
+
+[rust]
+format = "[[ $symbol( $version) ](fg:black bg:cyan)]($style)"
+style = "bg:cyan"
+symbol = ""
+
+[time]
+disabled = false
+format = "[[   $time ](fg:black bg:purple)]($style)"
+style = "bg:bright-orange"
+time_format = "%R"
+
+[username]
+format = "[ $user ]($style)"
+show_always = true
+style_root = "bg:bright-black fg:white"
+style_user = "bg:bright-black fg:white"
