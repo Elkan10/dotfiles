@@ -66,7 +66,6 @@
     kernelModules = [ "r8125" "i2c-dev" "i2c-piix4" ];
     kernelParams = [
       "amdgpu.ppfeaturemask=0xffffffff"
-      "fbcon=map:1"
     ];
   };
 
