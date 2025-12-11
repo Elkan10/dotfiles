@@ -3,6 +3,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     jail-nix.url = "sourcehut:~alexdavid/jail.nix";
     wrappers.url = "github:Lassulus/wrappers";
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    playit.url = "github:pedorich-n/playit-nixos-module";
   };
   outputs = { self, nixpkgs, jail-nix, wrappers, ... }@inputs:
   let
@@ -73,13 +75,24 @@
         ({...}: {
           containers = lib.mapAttrs (name: modulePath: {
             autoStart = false;
-            config = import modulePath;
+            bindMounts = {
+              "/${name}" = {
+                hostPath = "/home/elvis/.srv/${name}";
+                isReadOnly = false;
+              };
+            };
+            config = import modulePath {inherit inputs;};
           }) containerModules;
         });
 
     nixosConfigurations.desktop = lib.nixosSystem {
       inherit system;
       modules = [
+        ({...}: {
+          nixpkgs.overlays = [inputs.nix-minecraft.overlay];
+        })
+        inputs.nix-minecraft.nixosModules.minecraft-servers
+        inputs.playit.nixosModules.default
         ./hosts/desktop/hardware.nix
         ./hosts/desktop/configuration.nix
         self.modules.containers

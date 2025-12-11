@@ -8,8 +8,9 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
+  
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "thunderbolt" "usb_storage" "usbhid" "sd_mod" ];
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  # boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
@@ -42,4 +43,9 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = true;
+
+  hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
+  services.xserver.videoDrivers = [ "amdgpu" ];
+  hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
 }

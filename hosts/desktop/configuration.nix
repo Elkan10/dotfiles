@@ -2,7 +2,10 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs.config.allowUnfree = true;
 
-  services.displayManager.ly.enable = true;
+  services.displayManager = {
+    ly.enable = true;
+    preStart = "${pkgs.fbset}/bin/fbset -xres 2560 -yres 1440"; 
+  };
   
   programs.hyprland = {
     enable = true;
@@ -20,6 +23,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    fbset
     git
     htop
     libnotify
@@ -38,7 +42,6 @@
     lldb_18
     nixd
   ] ++ (with self.packages.${pkgs.system}; [
-    firefox-jailed
     helix-wrapped
     starship-wrapped
   ]);
@@ -51,6 +54,8 @@
         enable_transience
       '';
   };
+
+  boot.consoleLogLevel = 3;
 
   boot.loader.grub = {
     enable = true;
@@ -66,7 +71,17 @@
     kernelModules = [ "r8125" "i2c-dev" "i2c-piix4" ];
     kernelParams = [
       "amdgpu.ppfeaturemask=0xffffffff"
+      "video=card1-DP-1:2560x1440@240m"
+      "video=card1-HDMI-A-1:1920x1080"
     ];
+  };
+
+  
+  services.playit = {
+    enable = true;
+    user = "playit";
+    group = "playit";
+    secretPath = "/home/elvis/.config/playit_gg/playit.toml";
   };
 
   networking.hostName = "desktop";
