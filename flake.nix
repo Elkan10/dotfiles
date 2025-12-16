@@ -1,12 +1,11 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    jail-nix.url = "sourcehut:~alexdavid/jail.nix";
     wrappers.url = "github:Lassulus/wrappers";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     playit.url = "github:pedorich-n/playit-nixos-module";
   };
-  outputs = { self, nixpkgs, jail-nix, wrappers, ... }@inputs:
+  outputs = { self, nixpkgs, wrappers, ... }@inputs:
   let
     system = "x86_64-linux";
     lib = nixpkgs.lib;
@@ -14,7 +13,6 @@
       inherit system;
       config.allowUnfree = true;
     };
-    jail = jail-nix.lib.init pkgs;
 
     hyprlandConfig = ./configs/hypr/hyprland.conf;
     starshipConfig = ./configs/starship.toml;
@@ -34,7 +32,6 @@
     ) shellFiles);
   in {
     packages.${system} = {
-      firefox-jailed = jail "firefox-jailed" pkgs.firefox (combinators: with combinators; [network gui gpu]);
       hyprland-wrapped = wrappers.lib.wrapPackage {
         inherit pkgs;
         package = pkgs.hyprland;

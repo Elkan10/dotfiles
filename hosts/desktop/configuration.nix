@@ -34,7 +34,11 @@
     yazi
     any-nix-shell
 
+    rofi
+    alacritty
+
     steam
+    firefox
     prismlauncher
     vesktop
 
@@ -57,6 +61,11 @@
 
   boot.consoleLogLevel = 3;
 
+  boot.loader.efi = {
+    canTouchEfiVariables = true;
+    efiSysMountPoint = "/boot/efi";
+  };
+
   boot.loader.grub = {
     enable = true;
     efiSupport = true;
@@ -64,7 +73,6 @@
     configurationLimit = 5;
   };
   boot.loader.timeout = 10;
-  boot.loader.efi.canTouchEfiVariables = true;
 
   boot = {
     blacklistedKernelModules = [ "r8169" ];

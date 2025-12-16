@@ -52,21 +52,6 @@
         "type": "github"
       }
     },
-    "jail-nix": {
-      "locked": {
-        "lastModified": 1764535788,
-        "narHash": "sha256-QGjXRCmsMxSayEyail0wEpSiRCUaZaejCv2uKpcNH0E=",
-        "owner": "~alexdavid",
-        "repo": "jail.nix",
-        "rev": "8f61c140858daf8ec21e6355b250cca6f5bf86fb",
-        "type": "sourcehut"
-      },
-      "original": {
-        "owner": "~alexdavid",
-        "repo": "jail.nix",
-        "type": "sourcehut"
-      }
-    },
     "nix-minecraft": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -205,7 +190,6 @@
     },
     "root": {
       "inputs": {
-        "jail-nix": "jail-nix",
         "nix-minecraft": "nix-minecraft",
         "nixpkgs": "nixpkgs_2",
         "playit": "playit",
