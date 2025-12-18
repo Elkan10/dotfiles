@@ -4,6 +4,7 @@
     wrappers.url = "github:Lassulus/wrappers";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     playit.url = "github:pedorich-n/playit-nixos-module";
+    agenix.url = "github:ryantm/agenix";
   };
   outputs = { self, nixpkgs, wrappers, ... }@inputs:
   let
@@ -90,6 +91,7 @@
         })
         inputs.nix-minecraft.nixosModules.minecraft-servers
         inputs.playit.nixosModules.default
+        inputs.agenix.nixosModules.default
         ./hosts/desktop/hardware.nix
         ./hosts/desktop/configuration.nix
         self.modules.containers

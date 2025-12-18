@@ -50,6 +50,7 @@
     starship-wrapped
   ]);
 
+
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
@@ -85,12 +86,20 @@
     ];
   };
 
+  age.identityPaths = [ "/home/elvis/.ssh/id_ed25519" ];
+
+  age.secrets.playit = {
+    file = ../../secrets/playit.age;
+    owner = "playit";
+    group = "playit";
+    mode = "600";
+  };
   
   services.playit = {
     enable = true;
     user = "playit";
     group = "playit";
-    secretPath = "/home/elvis/.config/playit_gg/playit.toml";
+    secretPath = config.age.secrets.playit.path;
   };
 
   networking.hostName = "desktop";
@@ -160,7 +169,6 @@
   ];
   
 
-  # TODO: services.displayManager, hyprland
 
   system.stateVersion = "23.11";
 }
