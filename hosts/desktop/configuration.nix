@@ -128,7 +128,10 @@
 
   console.keyMap = "sv-latin1";
 
-  services.printing.enable = true;
+  services.printing = {
+    drivers = with pkgs; [ cnijfilter2 ];
+    enable = true;
+  };
 
   services.avahi = {
     enable = true;

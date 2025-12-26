@@ -198,6 +198,13 @@
                 sha512 = "0857d30d063dc704a264b2fe774a7e641926193cfdcde72fe2cd603043d8548045b955e30c05b1b2b96ef7d1c0f85d55269da26f44a0644c984b45623e976794";
               };
             }
+            {
+              name = "servercore-fabric-1.5.15+1.21.11.jar";
+              path = fetchurl {
+                url = "https://cdn.modrinth.com/data/4WWQxlQP/versions/zg8VIycZ/servercore-fabric-1.5.15%2B1.21.11.jar";
+                sha512 = "964392769e53f9764466e26044552f60e91137f487b49d98a85bd4dc03ab8e965f0c69bc1a43e96ef5737cd8f1a9bb75cc0a0c09dd30bab6786d8ab4bbea6e01";
+              };
+            }
           ]);
       };
     };
