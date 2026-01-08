@@ -60,6 +60,8 @@
       '';
   };
 
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+
   boot.consoleLogLevel = 3;
 
   boot.loader.efi = {
