@@ -92,15 +92,10 @@
 
   age.secrets.playit = {
     file = ../../secrets/playit.age;
-    owner = "playit";
-    group = "playit";
-    mode = "600";
   };
   
   services.playit = {
     enable = true;
-    user = "playit";
-    group = "playit";
     secretPath = config.age.secrets.playit.path;
   };
 
