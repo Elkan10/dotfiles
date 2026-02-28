@@ -60,6 +60,17 @@
       '';
   };
 
+  programs.bash = {
+    enable = true;
+    interactiveShellInit = ''
+        if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+        then
+          shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+          exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+        fi
+      '';
+  };
+
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
 
   boot.consoleLogLevel = 3;
@@ -153,7 +164,7 @@
     isNormalUser = true;
     description = "Elvis";
     extraGroups = [ "networkmanager" "wheel" "input" "uinput" "audio" ];
-    shell = pkgs.fish;
+    shell = pkgs.bash;
   };
 
   environment.sessionVariables = {
