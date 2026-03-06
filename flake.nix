@@ -17,6 +17,7 @@
 
     hyprlandConfig = ./configs/hypr/hyprland.conf;
     starshipConfig = ./configs/starship.toml;
+    alacrittyConfig = ./configs/alacritty.toml;
 
     containerDir = ./containers;
     containerFiles = builtins.filter (p: lib.hasSuffix ".nix" p) (builtins.attrNames (builtins.readDir containerDir));
@@ -40,9 +41,17 @@
           "--config" = "${hyprlandConfig}";
         };
       };
+      alacritty-wrapped = wrappers.lib.wrapPackage {
+        inherit pkgs;
+        package = pkgs.alacritty;
+        flags = {
+          "--config-file" = "${alacrittyConfig}";
+        };
+      };
       helix-wrapped = (wrappers.wrapperModules.helix.apply {
         inherit pkgs;
         settings = {
+          theme = "darcula";
           editor = {
             line-number = "relative";
             lsp.display-messages = true;

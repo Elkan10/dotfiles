@@ -35,7 +35,8 @@
     any-nix-shell
 
     rofi
-    alacritty
+    hyprshot
+    mako
 
     steam
     firefox
@@ -53,6 +54,7 @@
   ] ++ (with self.packages.${pkgs.system}; [
     helix-wrapped
     starship-wrapped
+    alacritty-wrapped
   ]);
 
   programs.steam = {
@@ -60,6 +62,10 @@
     protontricks = {
       enable = true;
     };
+  };
+
+  xdg.portal = {
+    wlr.enable = true;
   };
 
 
@@ -184,6 +190,7 @@
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
     EDITOR = "hx";
+    HYPRSHOT_DIR = "/home/elvis/screenshots";
   };
 
 
