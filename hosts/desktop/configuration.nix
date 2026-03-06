@@ -45,10 +45,22 @@
     rust-analyzer
     lldb_18
     nixd
+
+    limo
+    protonup-qt
+    yad
+    bottles
   ] ++ (with self.packages.${pkgs.system}; [
     helix-wrapped
     starship-wrapped
   ]);
+
+  programs.steam = {
+    enable = true;
+    protontricks = {
+      enable = true;
+    };
+  };
 
 
   programs.fish = {
