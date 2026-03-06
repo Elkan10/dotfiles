@@ -5,6 +5,7 @@
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     playit.url = "github:pedorich-n/playit-nixos-module";
     agenix.url = "github:ryantm/agenix";
+    awww.url = "git+https://codeberg.org/LGFae/awww";
   };
   outputs = { self, nixpkgs, wrappers, ... }@inputs:
   let
@@ -18,6 +19,7 @@
     hyprlandConfig = ./configs/hypr/hyprland.conf;
     starshipConfig = ./configs/starship.toml;
     alacrittyConfig = ./configs/alacritty.toml;
+    waybarConfig = ./configs/waybar;
 
     containerDir = ./containers;
     containerFiles = builtins.filter (p: lib.hasSuffix ".nix" p) (builtins.attrNames (builtins.readDir containerDir));
@@ -34,6 +36,7 @@
     ) shellFiles);
   in {
     packages.${system} = {
+      awww = inputs.awww.packages.${system}.awww;
       hyprland-wrapped = wrappers.lib.wrapPackage {
         inherit pkgs;
         package = pkgs.hyprland;
@@ -48,10 +51,18 @@
           "--config-file" = "${alacrittyConfig}";
         };
       };
+      waybar-wrapped = wrappers.lib.wrapPackage {
+        inherit pkgs;
+        package = pkgs.waybar;
+        flags = {
+          "--config" = "${waybarConfig}/config.jsonc";
+          "--style" = "${waybarConfig}/style.css";
+        };
+      };
       helix-wrapped = (wrappers.wrapperModules.helix.apply {
         inherit pkgs;
         settings = {
-          theme = "darcula";
+          theme = "darcula_transparent";
           editor = {
             line-number = "relative";
             lsp.display-messages = true;
@@ -69,6 +80,12 @@
               language-servers = [ "nixd" ];
             }
           ];
+        };
+        themes = {
+          darcula_transparent = {
+            inherits = "darcula";
+            "ui.background" = {};
+          };
         };
       }).wrapper;
       starship-wrapped = wrappers.lib.wrapPackage {

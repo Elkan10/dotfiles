@@ -1,0 +1,65 @@
+{
+  "layer": "top",
+  "spacing": 0,
+  "height": 0,
+
+  "margin-top": 8,
+  "margin-right": 8,
+  "margin-bottom": 0,
+  "margin-left": 8,
+
+  "modules-left": [
+    "hyprland/workspaces",
+  ],
+
+  "modules-center": [
+    "clock"
+  ],
+
+  "modules-right": [
+    "tray",
+    "cpu",
+    "memory",
+    "network",
+  ],
+
+  "hyprland/workspaces": {
+    "format": "{name}: <big>{windows}</big>",
+    "format-windows-separator": " ",
+    "window-rewrite-default": "",
+    "window-rewrite": {
+      "class<firefox>": "",
+      "class<steam>": "",
+      "class<vesktop>": "",
+      "class<alacritty>": "",
+    },
+    "on-click": "activate",
+    "sort-by-number": true,
+  },
+
+  "clock": {
+    "format": "{:%H:%M - %a, %d %b %Y}",
+    "tooltip": false,
+  },
+
+  "tray": {
+    "spacing": 10,
+    "tooltip": false,
+  },
+
+  "cpu": {
+    "format": "cpu {usage}%",
+    "interval": 2,
+  },
+
+  "memory": {
+    "format": "mem {percentage}%",
+    "interval": 2,
+  },
+
+  "network": {
+    "format": "net {bandwidthDownBits}",
+    "interval": 5,
+    "tooltip": false,
+  },
+}

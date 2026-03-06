@@ -51,10 +51,14 @@
     protonup-qt
     yad
     bottles
+
+    adwaita-icon-theme
   ] ++ (with self.packages.${pkgs.system}; [
+    awww
     helix-wrapped
     starship-wrapped
     alacritty-wrapped
+    waybar-wrapped
   ]);
 
   programs.steam = {
