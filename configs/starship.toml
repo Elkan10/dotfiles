@@ -15,7 +15,7 @@ success_symbol = "[](bold fg:green)"
 format = "[ $path ]($style)"
 style = "fg:black bg:blue"
 truncation_length = 3
-truncation_symbol = "…/"
+truncation_symbol = "../"
 
 [directory.substitutions]
 Developer = "󰲋 "
