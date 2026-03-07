@@ -1,15 +1,11 @@
-{pkgs, config, self, ...}: {
+{pkgs, config, self, inputs, ...}: {
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs.config.allowUnfree = true;
-
-  services.displayManager = {
-    ly.enable = true;
-    preStart = "${pkgs.fbset}/bin/fbset -xres 2560 -yres 1440"; 
-  };
   
   programs.hyprland = {
     enable = true;
     package = self.packages.${pkgs.system}.hyprland-wrapped;
+    portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
   };
   
   i18n.inputMethod = {
@@ -53,8 +49,13 @@
     bottles
 
     adwaita-icon-theme
+
+    inputs.awww.packages.${pkgs.system}.awww
+
+    (pkgs.writeShellScriptBin "start" ''
+      exec dbus-run-session start-hyprland
+    '')
   ] ++ (with self.packages.${pkgs.system}; [
-    awww
     helix-wrapped
     starship-wrapped
     alacritty-wrapped
@@ -68,10 +69,7 @@
     };
   };
 
-  xdg.portal = {
-    wlr.enable = true;
-  };
-
+  xdg.portal.enable = true;  
 
   programs.fish = {
     enable = true;
@@ -195,6 +193,11 @@
     NIXOS_OZONE_WL = "1";
     EDITOR = "hx";
     HYPRSHOT_DIR = "/home/elvis/screenshots";
+
+    XDG_DATA_HOME="$HOME/.local/share";
+    XDG_CONFIG_HOME="$HOME/.config";
+    XDG_STATE_HOME="$HOME/.local/state";
+    XDG_CACHE_HOME="$HOME/.cache";
   };
 
 

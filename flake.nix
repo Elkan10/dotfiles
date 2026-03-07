@@ -6,6 +6,7 @@
     playit.url = "github:pedorich-n/playit-nixos-module";
     agenix.url = "github:ryantm/agenix";
     awww.url = "git+https://codeberg.org/LGFae/awww";
+    hyprland.url = "github:hyprwm/hyprland";
   };
   outputs = { self, nixpkgs, wrappers, ... }@inputs:
   let
@@ -36,10 +37,9 @@
     ) shellFiles);
   in {
     packages.${system} = {
-      awww = inputs.awww.packages.${system}.awww;
       hyprland-wrapped = wrappers.lib.wrapPackage {
         inherit pkgs;
-        package = pkgs.hyprland;
+        package = inputs.hyprland.packages.${system}.hyprland;
         flags = {
           "--config" = "${hyprlandConfig}";
         };
