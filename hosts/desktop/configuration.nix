@@ -38,6 +38,7 @@
     firefox
     prismlauncher
     vesktop
+    heroic
 
     rust-analyzer
     lldb_18
