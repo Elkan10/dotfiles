@@ -5,6 +5,8 @@
             pkgs.heroic
             pkgs.prismlauncher
             pkgs.legcord
+            pkgs.limo
+            pkgs.anki
         ];
 
         programs.steam = {
