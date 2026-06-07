@@ -67,6 +67,7 @@
         '';
 
         autopairs.nvim-autopairs.enable = true;
+        utility.motion.flash-nvim.enable = true;
 
         clipboard = {
             enable = true;
