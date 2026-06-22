@@ -20,7 +20,7 @@ local config = {
 }
 
 config.actions = {
-    ["Ctrl-Shift-N"] = function() 
+    ["Ctrl-Shift-N"] = function()
         waywall.exec("@ninjabrainbot@")
     end,
     ["V"] = function()

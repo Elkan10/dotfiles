@@ -30,7 +30,7 @@
     "window-rewrite": {
       "class<firefox>": "",
       "class<steam>": "",
-      "class<electron>": "",
+      "class<legcord>": "",
       "class<alacritty>": "",
     },
     "on-click": "activate",

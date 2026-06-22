@@ -3,18 +3,14 @@
         packages.ninjabrain-bot = pkgs.callPackage ../../deriv/ninjabrain-bot.nix {};
         packages.myWaywall = 
             (let
-                configDir = pkgs.runCommand "waywall-config" {
-                    src = ../../configs/waywall;
-                    java = "${pkgs.jre}/bin/java";
-                    ninjabrainbot = "${self'.packages.ninjabrain-bot}/bin/ninjabrain-bot";
-                } ''
-                    mkdir -p $out/waywall
-                    cp -r $src/. $out/waywall
-                    chmod -R +w $out
-                    for f in $(find $out -type f); do
-                        substituteAllInPlace $f 
-                    done
-                '';
+                configDir = self.lib.template {
+                    inherit pkgs;
+                    name = "waywall"; 
+                    path = ../../configs/waywall; 
+                    vars = {
+                        ninjabrainbot = "${self'.packages.ninjabrain-bot}/bin/ninjabrain-bot";
+                    };
+                };
              in inputs.wrappers.lib.wrapPackage {
                 inherit pkgs;
                 package = pkgs.waywall;
