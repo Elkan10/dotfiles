@@ -1,0 +1,57 @@
+{
+    lib,
+    stdenv,
+    fetchurl,
+    makeWrapper,
+    jre,
+    libxkbcommon,
+    libx11,
+    libxt,
+    libxtst,
+    libxext,
+    libxi,
+    libxrender,
+    libxrandr,
+    libxfixes,
+    libxkbfile,
+    xkeyboard_config,
+}:
+stdenv.mkDerivation rec {
+    pname = "ninjabrain-bot";
+    version = "1.5.2";
+
+    src = fetchurl {
+        url = "https://github.com/Ninjabrain1/Ninjabrain-Bot/releases/download/${version}/Ninjabrain-Bot-${version}.jar";
+        sha256 = "sha256-mAmfYyGpDUrOwTQA6G0F96+NYOVjnC84Qn6WjccUUP8=";
+    };
+
+    nativeBuildInputs = [makeWrapper];
+
+    # All required runtime libraries for the application to function correctly.
+    runtimeLibs = [libxkbcommon libx11 libxt libxtst libxext libxi libxrender libxrandr libxfixes libxkbfile xkeyboard_config];
+
+    # jre and Xwayland are also build inputs.
+    buildInputs = [jre] ++ runtimeLibs;
+
+    dontUnpack = true;
+
+    installPhase = ''
+    runHook preInstall
+    mkdir -p $out/bin $out/share/java
+    cp $src $out/share/java/ninjabrain-bot.jar
+
+    # This wrapper sets the necessary library path for all dependencies
+    # and a required AWT flag for compatibility with modern window managers.
+    makeWrapper ${jre}/bin/java $out/bin/ninjabrain-bot \
+      --add-flags "-Dswing.defaultlaf=javax.swing.plaf.metal.MetalLookAndFeel -jar $out/share/java/ninjabrain-bot.jar" \
+      --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath runtimeLibs}
+    runHook postInstall
+    '';
+
+    meta = with lib; {
+        description = "Minecraft speedrunning advanced stronghold calculator";
+        homepage = "https://github.com/Ninjabrain1/Ninjabrain-Bot";
+        license = licenses.gpl3Plus;
+        platforms = platforms.linux;
+    };
+}
