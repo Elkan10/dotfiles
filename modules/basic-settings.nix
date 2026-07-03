@@ -11,6 +11,7 @@
                 fcitx5-hangul
                 fcitx5-mozc-ut
             ];
+            fcitx5.waylandFrontend = true;
         };
 
         environment.systemPackages = [
