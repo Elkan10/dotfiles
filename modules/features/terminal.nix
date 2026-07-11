@@ -1,50 +1,52 @@
 {self, inputs, ...}: {
-  perSystem = {pkgs, ...}: {
-    packages.myAlacritty = (inputs.wrappers.wrapperModules.alacritty.apply {
-      inherit pkgs;
-      "alacritty.toml".path = "${../../configs/alacritty.toml}";
-    }).wrapper;
-    packages.myStarship = (inputs.wrappers.wrapperModules.starship.apply {
-      inherit pkgs;
-      configFile.path = "${../../configs/starship.toml}";
-    }).wrapper;
-  };
+    perSystem = {pkgs, ...}: {
+        packages.myAlacritty = (inputs.wrappers.wrapperModules.alacritty.apply {
+            inherit pkgs;
+            "alacritty.toml".path = "${../../configs/alacritty.toml}";
+        }).wrapper;
 
-  flake.nixosModules.terminal = {pkgs, ...}: {
-    environment.systemPackages = [
-      self.packages.${pkgs.stdenv.hostPlatform.system}.myAlacritty
-      self.packages.${pkgs.stdenv.hostPlatform.system}.myStarship
-      pkgs.any-nix-shell
+        packages.myStarship = (inputs.wrappers.wrapperModules.starship.apply {
+            inherit pkgs;
+            configFile.path = "${../../configs/starship.toml}";
+        }).wrapper;
 
-      pkgs.git
-      pkgs.htop
-      pkgs.usbutils
-      pkgs.coreutils
-      pkgs.fastfetch
-    ];
-
-    fonts.packages = with pkgs; [
-      nerd-fonts.iosevka
-    ];
-
-    programs.fish = {
-      enable = true;
-      interactiveShellInit = ''
-          any-nix-shell fish --info-right | source
-          starship init fish | source
-          enable_transience
-        '';
+        packages.myNushell = (inputs.wrappers.wrapperModules.nushell.apply {
+            inherit pkgs;
+            "env.nu".path = "${../../configs/env.nu}";
+            "config.nu".path = "${../../configs/config.nu}";
+        }).wrapper;
     };
 
-    programs.bash = {
-      enable = true;
-      interactiveShellInit = ''
-        if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
-        then
-          shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-          exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
-        fi
-      '';
+    flake.nixosModules.terminal = {pkgs, ...}: {
+        environment.systemPackages = [
+            self.packages.${pkgs.stdenv.hostPlatform.system}.myAlacritty
+            self.packages.${pkgs.stdenv.hostPlatform.system}.myStarship
+            self.packages.${pkgs.stdenv.hostPlatform.system}.myNushell
+            pkgs.carapace
+
+            pkgs.git
+            pkgs.htop
+            pkgs.usbutils
+            pkgs.coreutils
+            pkgs.fastfetch
+        ];
+
+        environment.shells = [
+            self.packages.${pkgs.stdenv.hostPlatform.system}.myNushell
+        ];
+
+        fonts.packages = with pkgs; [
+            nerd-fonts.iosevka
+        ];
+
+
+        programs.bash = {
+            enable = true;
+            interactiveShellInit = ''
+                if [ -z "$IN_NIX_SHELL" ] && [ "$(ps -o comm= -p $PPID)" != nu ]; then
+                    exec nu
+                fi
+            '';
+        };
     };
-  };
 }
