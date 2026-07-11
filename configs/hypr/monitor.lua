@@ -20,14 +20,6 @@ hl.window_rule({
     suppress_event = "maximize",
 })
 
-hl.window_rule({
-    name = "transparent-legcord",
-    match = {
-        class = "legcord",
-    },
-    opacity = 0.8,
-})
-
 hl.workspace_rule({
     workspace = "1",
     monitor = "DP-1",

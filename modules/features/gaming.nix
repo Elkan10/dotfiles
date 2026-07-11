@@ -28,7 +28,7 @@
             pkgs.prismlauncher
             self.packages.${pkgs.stdenv.hostPlatform.system}.myWaywall            
 
-            pkgs.legcord
+            pkgs.discord
             
             pkgs.limo
             pkgs.anki
