@@ -8,6 +8,7 @@
             self.nixosModules.gaming
             self.nixosModules.neovim
             self.nixosModules.kanata
+            self.nixosModules.proton-vpn
         ];
     };
 
