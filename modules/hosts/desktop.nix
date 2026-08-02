@@ -9,6 +9,8 @@
             self.nixosModules.neovim
             self.nixosModules.kanata
             self.nixosModules.proton-vpn
+            self.nixosModules.podman
+            self.nixosModules.pumpkinmc
         ];
     };
 
