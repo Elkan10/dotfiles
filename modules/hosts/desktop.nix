@@ -11,6 +11,7 @@
             self.nixosModules.proton-vpn
             self.nixosModules.podman
             self.nixosModules.pumpkinmc
+            self.nixosModules.languages
         ];
     };
 
