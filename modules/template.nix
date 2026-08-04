@@ -1,4 +1,4 @@
-{...}: {
+{self, inputs, lib, ...}: { 
     flake.lib = {
         template = {pkgs, name, path, vars}:  
                 pkgs.runCommand "${name}-cfg" ({

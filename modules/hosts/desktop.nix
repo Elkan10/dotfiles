@@ -2,6 +2,7 @@
     flake.nixosConfigurations.desktop = inputs.nixpkgs.lib.nixosSystem {
         modules = [
             self.nixosModules.desktop-hardware
+            self.nixosModules.desktop-options
             self.nixosModules.basic-settings
             self.nixosModules.hyprland
             self.nixosModules.terminal
@@ -12,6 +13,26 @@
             self.nixosModules.podman
             self.nixosModules.pumpkinmc
             self.nixosModules.languages
+        ];
+    };
+
+    flake.nixosModules.desktop-options = {...}: {
+        networking.hostName = "desktop";
+        my-hyprland.monitors = [
+            {
+                output = "DP-1";
+                mode = "2560x1440@240";
+                position = "0x0";
+                scale = 1.0;
+                workspaces = [ 1 2 3 ];
+            }
+            {
+                output = "HDMI-A-1";
+                mode = "1920x1080@120";
+                position = "auto-left";
+                scale = 1.0;
+                workspaces = [ 4 5 ];
+            }
         ];
     };
 
@@ -44,8 +65,7 @@
         # (the default) this is the recommended approach. When using systemd-networkd it's
         # still possible to use this option, but it's recommended to use it in conjunction
         # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-        networking.useDHCP = lib.mkDefault true;
-        # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
+        networking.useDHCP = lib.mkDefault true; 
 
         nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
         hardware.cpu.amd.updateMicrocode = true;
