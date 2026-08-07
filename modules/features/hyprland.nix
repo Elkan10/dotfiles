@@ -113,6 +113,7 @@
                     pkgs.hyprshot
 
                     pkgs.adwaita-icon-theme
+                    pkgs.bibata-cursors
                     self.packages.${pkgs.stdenv.hostPlatform.system}.myWaybar
                     inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
 
