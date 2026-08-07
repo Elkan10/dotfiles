@@ -18,7 +18,7 @@
     };
 
     flake.nixosModules.laptop-options = {
-        networking.hostName = "elvis-laptop";
+        networking.hostName = "laptop";
         my-hyprland.monitors = [
             {
                 output = "eDP-1";
