@@ -1,7 +1,5 @@
 hl.bind("SUPER + Q", hl.dsp.exec_cmd("alacritty"))
 hl.bind("SUPER + C", hl.dsp.window.close())
-hl.bind("SUPER + M", hl.dsp.exec_cmd("systemctl poweroff"))
-hl.bind("SUPER + SHIFT + M", hl.dsp.exec_cmd("systemctl reboot"))
 hl.bind("SUPER + V", hl.dsp.window.float({action = "toggle"}))
 hl.bind("SUPER + F", hl.dsp.window.fullscreen({mode = "fullscreen", action = "toggle"}))
 hl.bind("SUPER + S", hl.dsp.exec_cmd("hyprshot -m region"))
@@ -33,6 +31,7 @@ if "@bar@" == "noctalia" then
     hl.bind("SUPER + A", hl.dsp.exec_cmd("noctalia msg panel-toggle control-center"))
     hl.bind("SUPER + comma", hl.dsp.exec_cmd("noctalia msg settings-toggle"))
     hl.bind("ALT + Tab", hl.dsp.exec_cmd("noctalia msg window-switcher"))
+    hl.bind("SUPER + M", hl.dsp.exec_cmd("noctalia msg panel-toggle session"))
 
     hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("noctalia msg volume-up"))
     hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("noctalia msg volume-down"))
@@ -41,4 +40,6 @@ if "@bar@" == "noctalia" then
     hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("noctalia msg brightness-down"))
 else
     hl.bind("SUPER + R", hl.dsp.exec_cmd("rofi -show drun"))
+    hl.bind("SUPER + M", hl.dsp.exec_cmd("systemctl poweroff"))
+    hl.bind("SUPER + SHIFT + M", hl.dsp.exec_cmd("systemctl reboot"))
 end
