@@ -61,6 +61,7 @@
             powerOnBoot = true;
             settings = {
                 General.Experimental = true;
+                General.Enable = "Source,Sink,Media,Socket";
                 Policy.AutoEnable = true;
             };
         };
