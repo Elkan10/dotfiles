@@ -8,6 +8,7 @@
             self.nixosModules.laptop-hardware
             self.nixosModules.laptop-options 
             self.nixosModules.basic-settings
+            self.nixosModules.battery-control
             self.nixosModules.waybar
             self.nixosModules.hyprland
             self.nixosModules.terminal
@@ -54,5 +55,14 @@
 
         nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
         hardware.cpu.intel.updateMicrocode = true;
+        
+        hardware.bluetooth = {
+            enable = true;
+            powerOnBoot = true;
+            settings = {
+                General.Experimental = true;
+                Policy.AutoEnable = true;
+            };
+        };
     };
 }

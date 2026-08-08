@@ -4,7 +4,7 @@
             self.nixosModules.desktop-hardware
             self.nixosModules.desktop-options
             self.nixosModules.basic-settings
-            self.nixosModules.waybar
+            self.nixosModules.noctalia
             self.nixosModules.hyprland
             self.nixosModules.terminal
             self.nixosModules.gaming
