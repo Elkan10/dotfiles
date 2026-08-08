@@ -22,7 +22,7 @@
                 '') (builtins.tail m.workspaces))
             ) monitors;
 
-        mkHyprland = {pkgs, monitors}:
+        mkHyprland = {pkgs, monitors, bar}:
             (let 
                 configDir = self.lib.template {
                     inherit pkgs;
@@ -30,6 +30,7 @@
                     path = ../../configs/hypr;
                     vars = {
                         monitors = self.lib.genLuaMonitors monitors; 
+                        bar = bar;
                     };
                 }; 
             in inputs.wrappers.lib.wrapPackage {
@@ -41,20 +42,16 @@
                 });
     };
 
-    perSystem =
-        { pkgs, ... }:
-        {
-            packages.myWaybar =
-                (inputs.wrappers.wrapperModules.waybar.apply {
-                    inherit pkgs;
-                    configFile.path = "${../../configs/waybar/config.jsonc}";
-                    "style.css".path = "${../../configs/waybar/style.css}";
-                }).wrapper;
-        };
 
     flake.nixosModules.hyprland =
         { pkgs, config, lib, ... }:
         {
+            options.my-hyprland.bar = lib.mkOption {
+                default = "";
+                description = "Bar to use for hyprland";
+                type = lib.types.str;
+            };
+
             options.my-hyprland.monitors = lib.mkOption {
                 default = [];
                 type = lib.types.listOf (lib.types.submodule {
@@ -95,6 +92,10 @@
                         assertion = config.my-hyprland.monitors != [];
                         message = "Hyprland module is imported, but no monitor config has been set";
                     }
+                    {
+                        assertion = config.my-hyprland.bar != "";
+                        message = "Hyprland module is imported, but no bar has been set";
+                    }
                 ];
 
                 programs.hyprland = {
@@ -102,6 +103,7 @@
                     package = self.lib.mkHyprland {
                         inherit pkgs;
                         monitors = config.my-hyprland.monitors;
+                        bar = config.my-hyprland.bar;
                     };
                 };
 
@@ -114,7 +116,6 @@
 
                     pkgs.adwaita-icon-theme
                     pkgs.bibata-cursors
-                    self.packages.${pkgs.stdenv.hostPlatform.system}.myWaybar
                     inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
 
                     (pkgs.writeShellScriptBin "start" ''

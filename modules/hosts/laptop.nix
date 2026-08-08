@@ -8,6 +8,7 @@
             self.nixosModules.laptop-hardware
             self.nixosModules.laptop-options 
             self.nixosModules.basic-settings
+            self.nixosModules.waybar
             self.nixosModules.hyprland
             self.nixosModules.terminal
             self.nixosModules.neovim
