@@ -9,7 +9,7 @@
             self.nixosModules.laptop-options 
             self.nixosModules.basic-settings
             self.nixosModules.battery-control
-            self.nixosModules.waybar
+            self.nixosModules.noctalia
             self.nixosModules.hyprland
             self.nixosModules.terminal
             self.nixosModules.neovim
