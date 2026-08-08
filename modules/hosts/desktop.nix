@@ -14,6 +14,7 @@
             self.nixosModules.podman
             self.nixosModules.pumpkinmc
             self.nixosModules.languages
+            self.nixosModules.ssh-server
         ];
     };
 
