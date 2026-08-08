@@ -100,6 +100,7 @@
 
                 programs.hyprland = {
                     enable = true;
+                    withUWSM = true;
                     package = self.lib.mkHyprland {
                         inherit pkgs;
                         monitors = config.my-hyprland.monitors;
@@ -116,11 +117,6 @@
 
                     pkgs.adwaita-icon-theme
                     pkgs.bibata-cursors
-                    inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
-
-                    (pkgs.writeShellScriptBin "start" ''
-                        exec dbus-run-session start-hyprland
-                    '')
                 ];
 
                 environment.sessionVariables = {
