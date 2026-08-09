@@ -6,6 +6,10 @@
         wrappers.url = "github:lassulus/wrappers";
 
         disko.url = "github:nix-community/disko";
+        lanzaboote = {
+            url = "github:nix-community/lanzaboote/v1.1.0";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
 
         awww.url = "git+https://codeberg.org/LGFae/awww";
         nvf.url = "github:NotAShelf/nvf";
