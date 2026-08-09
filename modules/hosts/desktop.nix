@@ -11,6 +11,7 @@
             self.nixosModules.neovim
             self.nixosModules.kanata
             self.nixosModules.proton-vpn
+            self.nixosModules.proton-pass
             self.nixosModules.podman
             self.nixosModules.pumpkinmc
             self.nixosModules.languages
