@@ -14,6 +14,8 @@
             fcitx5.waylandFrontend = true;
         };
 
+        console.keyMap = "sv-latin1";
+
         environment.systemPackages = [
             pkgs.firefox
         ];
