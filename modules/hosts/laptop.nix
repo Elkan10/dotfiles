@@ -5,6 +5,8 @@
 {
     flake.nixosConfigurations.laptop = inputs.nixpkgs.lib.nixosSystem {
         modules = [
+            inputs.disko.nixosModules.disko
+            self.nixosModules.laptop-disko
             self.nixosModules.laptop-hardware
             self.nixosModules.laptop-options 
             self.nixosModules.basic-settings
@@ -32,26 +34,67 @@
         ];
     };
 
+    flake.nixosModules.laptop-disko = {...}: {
+        disko.devices = {
+            disk.main = {
+                type = "disk";
+                device = "/dev/nvme0n1";
+                content = {
+                    type = "gpt";
+                    partitions = {
+                        ESP = {
+                            size = "512M";
+                            type = "EF00";
+                            content = {
+                                type = "filesystem";
+                                format = "vfat";
+                                mountpoint = "/boot";
+                                mountOptions = [ "umask=0077" ];
+                            };
+                        };
+                        luks = {
+                            size = "100%";
+                            content = {
+                                type = "luks";
+                                name = "crypted";
+                                settings.allowDiscards = true;
+                                content = {
+                                    type = "lvm_pv";
+                                    vg = "pool";
+                                };
+                            };
+                        };
+                    };
+                };
+            };
+            lvm_vg.pool = {
+                type = "lvm_vg";
+                lvs = {
+                    swap = {
+                        size = "8G";
+                        content = {
+                            type = "swap";
+                            resumeDevice = true;
+                        };
+                    };
+                    root = {
+                        size = "100%FREE";
+                        content = {
+                            type = "filesystem";
+                            format = "ext4";
+                            mountpoint = "/";
+                        };
+                    };
+                };
+            };
+        };
+    };
+
     flake.nixosModules.laptop-hardware = {lib, ...}: {
         boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
         boot.initrd.kernelModules = [ ];
         boot.kernelModules = [ "kvm-intel" ];
         boot.extraModulePackages = [ ];
-
-        fileSystems."/" =
-            { device = "/dev/disk/by-uuid/305cfd34-fd47-43fb-bfea-eac5e6de32f2";
-                fsType = "ext4";
-            };
-
-        fileSystems."/boot/efi" =
-            { device = "/dev/disk/by-uuid/D1A4-36B3";
-                fsType = "vfat";
-                options = [ "fmask=0077" "dmask=0077" ];
-            };
-
-        swapDevices =
-            [ { device = "/dev/disk/by-uuid/3e063d9b-117f-4548-976a-4a2074611566"; }
-            ];
 
         nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
         hardware.cpu.intel.updateMicrocode = true;

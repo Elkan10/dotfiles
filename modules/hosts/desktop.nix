@@ -16,6 +16,7 @@
             self.nixosModules.pumpkinmc
             self.nixosModules.languages
             self.nixosModules.ssh-server
+
         ];
     };
 
@@ -49,7 +50,7 @@
                 fsType = "ext4";
             };
 
-        fileSystems."/boot/efi" =
+        fileSystems."/boot" =
             { device = "/dev/disk/by-uuid/D02E-F1D9";
                 fsType = "vfat";
                 options = [ "fmask=0077" "dmask=0077" ];

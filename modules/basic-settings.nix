@@ -26,14 +26,9 @@
             loader = {
                 efi = {
                     canTouchEfiVariables = true;
-                    efiSysMountPoint = "/boot/efi";  
+                    efiSysMountPoint = "/boot";  
                 };
-                grub = {
-                    enable = true;
-                    efiSupport = true;
-                    device = "nodev";
-                    configurationLimit = 5;
-                };
+                systemd-boot.enable = true;
                 timeout = 10;
             };
         };

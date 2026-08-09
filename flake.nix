@@ -5,6 +5,8 @@
         import-tree.url = "github:vic/import-tree";
         wrappers.url = "github:lassulus/wrappers";
 
+        disko.url = "github:nix-community/disko";
+
         awww.url = "git+https://codeberg.org/LGFae/awww";
         nvf.url = "github:NotAShelf/nvf";
         noctalia-greeter = {
