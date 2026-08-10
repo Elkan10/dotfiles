@@ -16,7 +16,7 @@
             self.nixosModules.pumpkinmc
             self.nixosModules.languages
             self.nixosModules.ssh-server
-
+            self.nixosModules.distrobox
         ];
     };
 

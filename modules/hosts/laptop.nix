@@ -16,6 +16,7 @@
             self.nixosModules.kanata
             self.nixosModules.proton-vpn
             self.nixosModules.languages
+            self.nixosModules.distrobox
         ];
     };
 
