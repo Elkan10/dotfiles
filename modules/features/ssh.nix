@@ -15,7 +15,7 @@
 
         users.users."elvis".openssh.authorizedKeys.keys = [
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKQ9Reea9M197dhxIJ9tQnunzYNYyIKd1prcDf0avwcv elvis@desktop"
-            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICo8n/jVxZrGBadpio6XJHiFJSBk/yops2Qk6S35e2rg elvis@laptop"
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKgbAHl+Hbk8KGjjHH14W6KEu2HEtpOODQzkFyYXaWTH elvis@laptop"
         ];
     };
 }
