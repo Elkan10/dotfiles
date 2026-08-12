@@ -4,17 +4,24 @@
             self.nixosModules.desktop-hardware
             self.nixosModules.desktop-options
             self.nixosModules.basic-settings
+            
             self.nixosModules.noctalia
             self.nixosModules.hyprland
+            
             self.nixosModules.terminal
-            self.nixosModules.gaming
+            self.nixosModules.bash
+            
+            self.nixosModules.languages
             self.nixosModules.neovim
             self.nixosModules.kanata
+            
             self.nixosModules.proton-vpn
             self.nixosModules.proton-pass
+            
+            self.nixosModules.gaming
+
             self.nixosModules.podman
             self.nixosModules.pumpkinmc
-            self.nixosModules.languages
             self.nixosModules.ssh-server
             self.nixosModules.distrobox
         ];

@@ -9,13 +9,18 @@
             self.nixosModules.laptop-options 
             self.nixosModules.basic-settings
             self.nixosModules.battery-control
+
             self.nixosModules.noctalia
             self.nixosModules.hyprland
+
             self.nixosModules.terminal
+            self.nixosModules.bash
+
+            self.nixosModules.languages
             self.nixosModules.neovim
             self.nixosModules.kanata
+
             self.nixosModules.proton-vpn
-            self.nixosModules.languages
             self.nixosModules.distrobox
         ];
     };
