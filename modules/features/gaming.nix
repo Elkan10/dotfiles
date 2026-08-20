@@ -20,7 +20,11 @@
             });
     };
     
-    flake.nixosModules.gaming = {pkgs, ...}: {
+    flake.nixosModules.gaming = {pkgs, lib, ...}: {
+        imports = [
+            inputs.nix-flatpak.nixosModules.nix-flatpak
+        ];
+        
         environment.systemPackages = [
             pkgs.steam
             pkgs.heroic
@@ -37,6 +41,17 @@
         programs.steam = {
             enable = true;
             protontricks.enable = true;
+        };
+
+        services.flatpak = {
+            enable = true;
+            remotes = lib.mkOptionDefault [{
+                name = "modmanager-origin";
+                location = "https://chrisdkn.github.io/Amethyst-Mod-Manager/amethyst.flatpakrepo";
+            }];
+            packages = [
+                { appId = "io.github.Amethyst.ModManager//stable"; origin = "modmanager-origin"; }
+            ];
         };
     };
 }
