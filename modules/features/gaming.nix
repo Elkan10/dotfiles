@@ -36,6 +36,8 @@
             
             pkgs.limo
             pkgs.anki
+
+            pkgs.pixelorama
         ];
 
         programs.steam = {
