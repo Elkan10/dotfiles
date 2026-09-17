@@ -27,4 +27,13 @@
             '';
         };
     };
+    vim.luaConfigRC.fix-latex-indent = ''
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = "tex",
+            callback = function()
+                vim.bo.indentexpr = "vimtex#indent#level(v:lnum)"
+                vim.bo.indentkeys = vim.bo.indentkeys .. ",=\\end,=\\item"
+            end,
+        })
+    '';
 }
