@@ -20,6 +20,7 @@
             html.enable = true;
             css.enable = true;
             yaml.enable = true;
+            python.enable = true;
         };
     };
     vim.extraPlugins = {
