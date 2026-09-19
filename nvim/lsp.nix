@@ -16,6 +16,10 @@
                     };
                 };
             };
+            typescript.enable = true;
+            html.enable = true;
+            css.enable = true;
+            yaml.enable = true;
         };
     };
     vim.extraPlugins = {
