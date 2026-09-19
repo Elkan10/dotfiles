@@ -16,6 +16,7 @@
                     };
                 };
             };
+            python.enable = true;
         };
     };
     vim.extraPlugins = {
