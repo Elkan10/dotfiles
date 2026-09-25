@@ -1,5 +1,7 @@
 {self, inputs, ...}: {
     flake.nixosModules.languages = {pkgs, ...}: {
+        programs.direnv.enable = true;
+        
         environment.systemPackages = [
             pkgs.cargo
             pkgs.rustc
@@ -9,6 +11,8 @@
             pkgs.zathura
 
             pkgs.python3
+
+            pkgs.node
         ];
     };
 }
