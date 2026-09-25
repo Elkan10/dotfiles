@@ -12,7 +12,7 @@
 
             pkgs.python3
 
-            pkgs.node
+            pkgs.nodejs_22
         ];
     };
 }
