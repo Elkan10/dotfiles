@@ -114,6 +114,7 @@
                     pkgs.mako
                     pkgs.libnotify
                     pkgs.hyprshot
+                    pkgs.wl-clipboard
 
                     pkgs.adwaita-icon-theme
                     pkgs.bibata-cursors
