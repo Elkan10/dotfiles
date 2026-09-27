@@ -1,5 +1,16 @@
-format = "[](bright-black)$os$username[](bg:blue fg:bright-black)$directory[](fg:blue bg:red)$git_branch$git_status[](fg:red bg:cyan)$c$rust$golang$nodejs$php$java$kotlin$haskell$python[](fg:cyan bg:purple)$time[ ](fg:purple)$line_break$character"
+format = "[](bright-black)$os[](bg:red fg:bright-black)$hostname[](bg:white fg:red)$nix_shell[](bg:blue fg:white)$directory[](fg:blue bg:red)$git_branch$git_status[](fg:red bg:cyan)$c$rust$golang$nodejs$php$java$kotlin$haskell$python[](fg:cyan bg:purple)$time[ ](fg:purple)$line_break$character"
 palette = "base16"
+
+[hostname]
+ssh_only = true
+disabled = false
+style = "bg:red"
+format = "[ 󰖟 $hostname ]($style)"
+
+[nix_shell]
+disabled = false
+style = "bg:white fg:bright-black"
+format = "[ 󰜗 $name ]($style)"
 
 [c]
 format = "[[ $symbol( $version) ](fg:black bg:cyan)]($style)"
@@ -154,8 +165,3 @@ format = "[[   $time ](fg:black bg:purple)]($style)"
 style = "bg:bright-orange"
 time_format = "%R"
 
-[username]
-format = "[ $user ]($style)"
-show_always = true
-style_root = "bg:bright-black fg:white"
-style_user = "bg:bright-black fg:white"
