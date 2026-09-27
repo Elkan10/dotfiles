@@ -2,7 +2,7 @@
     perSystem = {pkgs, ...}: {
         packages.myNeovim = (inputs.nvf.lib.neovimConfiguration {
             inherit pkgs;
-            modules = (inputs.import-tree ../../nvim).imports;
+            modules = [ (inputs.import-tree ../../nvim) ];
         }).neovim;
     };
 

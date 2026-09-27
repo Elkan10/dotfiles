@@ -5,7 +5,6 @@
             packages.myNoctalia =
                 (inputs.wrappers.wrapperModules.noctalia.apply {
                     inherit pkgs;
-                    package = pkgs.noctalia;
                     "config.toml".path = "${../../configs/noctalia/config.toml}";
                 }).wrapper;
         };
@@ -13,15 +12,13 @@
     flake.nixosModules.noctalia = {pkgs, ...}: {
         my-hyprland.bar = "noctalia";
         
-        imports = [
-            inputs.noctalia-greeter.nixosModules.default
-        ];
+        imports = [];
 
         environment.systemPackages = [
             self.packages.${pkgs.stdenv.hostPlatform.system}.myNoctalia
         ];
 
-        programs.noctalia-greeter = {
+        services.displayManager.noctalia-greeter = {
             enable = true;
             settings = {
                 cursor = {
