@@ -1,10 +1,10 @@
-format = "[](bright-black)$os[](bg:red fg:bright-black)$hostname[](bg:white fg:red)$nix_shell[](bg:blue fg:white)$directory[](fg:blue bg:red)$git_branch$git_status[](fg:red bg:cyan)$c$rust$golang$nodejs$php$java$kotlin$haskell$python[](fg:cyan bg:purple)$time[ ](fg:purple)$line_break$character"
+format = "[](bright-black)$os[](bg:bright-purple fg:bright-black)$hostname[](bg:white fg:bright-purple)$nix_shell[](bg:blue fg:white)$directory[](fg:blue bg:red)$git_branch$git_status[](fg:red bg:cyan)$c$rust$golang$nodejs$php$java$kotlin$haskell$python[](fg:cyan bg:purple)$time[ ](fg:purple)$line_break$character"
 palette = "base16"
 
 [hostname]
 ssh_only = true
 disabled = false
-style = "bg:red"
+style = "bg:bright-purple"
 format = "[ 󰖟 $hostname ]($style)"
 
 [nix_shell]
