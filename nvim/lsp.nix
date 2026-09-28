@@ -1,6 +1,7 @@
 {pkgs, lib, ...}: {
     vim = {
         lsp.enable = true;
+        lsp.presets.tailwindcss-language-server.enable = true;
         languages = {
             enableTreesitter = true;
             nix.enable = true;
@@ -21,6 +22,7 @@
             css.enable = true;
             yaml.enable = true;
             python.enable = true;
+            vue.enable = true;
         };
     };
     vim.extraPlugins = {
