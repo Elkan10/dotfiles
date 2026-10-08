@@ -22,6 +22,8 @@
 
             self.nixosModules.podman
             self.nixosModules.pumpkinmc
+            
+            self.nixosModules.age
             self.nixosModules.ssh-server
             self.nixosModules.distrobox
         ];

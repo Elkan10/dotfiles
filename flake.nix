@@ -5,6 +5,8 @@
         import-tree.url = "github:vic/import-tree";
         wrappers.url = "github:lassulus/wrappers";
 
+        agenix.url = "github:ryantm/agenix";
+
         disko.url = "github:nix-community/disko";
         lanzaboote = {
             url = "github:nix-community/lanzaboote/v1.1.0";
@@ -13,10 +15,6 @@
 
         awww.url = "git+https://codeberg.org/LGFae/awww";
         nvf.url = "github:NotAShelf/nvf";
-        #noctalia-greeter = {
-        #    url = "github:noctalia-dev/noctalia-greeter";
-        #    inputs.nixpkgs.follows = "nixpkgs";
-        #};
 
         nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     };

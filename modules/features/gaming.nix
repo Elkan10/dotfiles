@@ -34,7 +34,6 @@
 
             pkgs.discord
             
-            pkgs.limo
             pkgs.anki
 
             pkgs.pixelorama
