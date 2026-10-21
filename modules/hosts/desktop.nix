@@ -26,6 +26,8 @@
             self.nixosModules.age
             self.nixosModules.ssh-server
             self.nixosModules.distrobox
+
+            self.nixosModules.ollama
         ];
     };
 
