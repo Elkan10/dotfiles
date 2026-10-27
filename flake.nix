@@ -15,8 +15,6 @@
 
         awww.url = "git+https://codeberg.org/LGFae/awww";
         nvf.url = "github:NotAShelf/nvf";
-
-        nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     };
 
     outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
