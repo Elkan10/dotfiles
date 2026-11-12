@@ -4,7 +4,8 @@
             self.nixosModules.desktop-hardware
             self.nixosModules.desktop-options
             self.nixosModules.basic-settings
-            
+           
+            self.nixosModules.firefox
             self.nixosModules.noctalia
             self.nixosModules.hyprland
             

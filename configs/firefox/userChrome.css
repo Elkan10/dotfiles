@@ -1,0 +1,101 @@
+:root {
+  --crust:    #11111b;
+  --mantle:   #181825;
+  --base:     #1e1e2e;
+  --surface0: #313244;
+  --surface1: #45475a;
+  --overlay0: #6c7086;
+  --text:     #cdd6f4;
+  --subtext0: #a6adc8;
+  --mauve:    #cba6f7;
+
+  --toolbar-bgcolor: var(--base) !important;
+  --toolbar-color: var(--text) !important;
+  --toolbar-field-background-color: var(--mantle) !important;
+  --toolbar-field-color: var(--text) !important;
+  --toolbar-field-focus-background-color: var(--surface0) !important;
+  --toolbar-field-focus-color: var(--text) !important;
+  --urlbarView-highlight-background: var(--surface0) !important;
+  --urlbarView-highlight-color: var(--text) !important;
+  --lwt-accent-color: var(--base) !important;
+  --lwt-text-color: var(--text) !important;
+  --arrowpanel-background: var(--mantle) !important;
+  --arrowpanel-color: var(--text) !important;
+  --arrowpanel-border-color: var(--surface0) !important;
+  --focus-outline-color: var(--mauve) !important;
+}
+
+* {
+  font-family: "Iosevka Nerd Font", monospace !important;
+  font-size: 12px !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Native tab bar off; the tab sidebar replaces it */
+#TabsToolbar,
+#titlebar {
+  visibility: collapse !important;
+}
+
+#navigator-toolbox {
+  border: none !important;
+  background: var(--base) !important;
+}
+#nav-bar {
+  background: var(--base) !important;
+  border: none !important;
+}
+
+/* Nav bar hidden until hover or focus */
+#navigator-toolbox:not(:focus-within):not(:hover) #nav-bar {
+  margin-top: -36px;
+  opacity: 0;
+  pointer-events: none;
+}
+#navigator-toolbox:focus-within #nav-bar,
+#navigator-toolbox:hover #nav-bar {
+  margin-top: 0;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#urlbar-background,
+#searchbar {
+  background: var(--mantle) !important;
+  border: 1px solid var(--surface0) !important;
+}
+#urlbar[focused="true"] > #urlbar-background {
+  border-color: var(--mauve) !important;
+}
+
+menupopup,
+panel {
+  --panel-background: var(--mantle) !important;
+  --panel-color: var(--text) !important;
+}
+menupopup {
+  background: var(--mantle) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--surface0) !important;
+}
+menuitem[_moz-menuactive="true"],
+menu[_moz-menuactive="true"] {
+  background: var(--surface0) !important;
+  color: var(--mauve) !important;
+}
+
+/* Sidebar frame */
+#sidebar-box {
+  background: var(--mantle) !important;
+  min-width: 180px !important;
+  max-width: 320px !important;
+  border: none !important;
+  border-right: 1px solid var(--surface0) !important;
+}
+#sidebar-header { display: none !important; }
+#sidebar-splitter {
+  background: transparent !important;
+  width: 1px !important;
+  border: none !important;
+}

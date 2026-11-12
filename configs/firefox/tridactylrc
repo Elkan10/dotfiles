@@ -1,0 +1,52 @@
+" Tridactyl config
+
+" --- appearance ---
+colourscheme catppuccin
+set smoothscroll true
+set hintchars asdfghjkl
+set hintfiltermode vimperator-reflow
+set hintnames short
+
+" --- new tab / start page ---
+set newtab about:blank
+
+" --- search engines ---
+set searchurls.d https://duckduckgo.com/?q=
+set searchurls.nw https://wiki.nixos.org/w/index.php?search=
+set searchurls.np https://search.nixos.org/packages?query=
+set searchurls.no https://search.nixos.org/options?query=
+set searchurls.gh https://github.com/search?q=
+set searchurls.yt https://www.youtube.com/results/?search_query=
+set searchurls.wk https://en.wikipedia.org/w/index.php?search=
+set searchengine d
+
+" --- navigation ---
+unbind <F1>
+bind J tabnext
+bind K tabprev
+bind H back
+bind L forward
+bind <C-o> back
+bind <C-i> forward
+bind d tabclose
+bind u undo
+bind x tabclose
+
+" --- quick access ---
+bind gt tab
+bind b fillcmdline buffer
+bind O fillcmdline tabopen
+bind o fillcmdline open
+bind yy clipboard yank
+bind p open -c
+bind P tabopen -c
+
+" --- scrolling ---
+bind <C-d> scrollpage 0.5
+bind <C-u> scrollpage -0.5
+
+" --- external editor (change to your terminal and editor) ---
+set editorcmd foot -e nvim
+
+" --- do not run Tridactyl on these pages ---
+autocmd DocStart mail.google.com mode ignore

@@ -16,10 +16,6 @@
 
         console.keyMap = "sv-latin1";
 
-        environment.systemPackages = [
-            pkgs.firefox
-        ];
-
         xdg.portal.enable = true;
 
         boot = {
@@ -63,6 +59,12 @@
             enable = true;
         };
 
+        hardware.sane = {
+            enable = true;
+            extraBackends = [ pkgs.sane-airscan ];
+            disabledDefaultBackends = [ "escl" ];
+        };
+
         services.avahi = {
             enable = true;
             nssmdns4 = true;
@@ -84,7 +86,7 @@
         users.users.elvis = {
             isNormalUser = true;
             description = "Elvis";
-            extraGroups = ["networkmanager" "wheel" "input" "uinput" "audio"];
+            extraGroups = ["networkmanager" "wheel" "input" "uinput" "audio" "scanner"];
             shell = pkgs.bash;
         };
 

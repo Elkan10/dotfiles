@@ -10,6 +10,7 @@
             self.nixosModules.basic-settings
             self.nixosModules.battery-control
 
+            self.nixosModules.firefox
             self.nixosModules.noctalia
             self.nixosModules.hyprland
 
