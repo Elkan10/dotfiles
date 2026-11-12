@@ -29,7 +29,8 @@
             self.packages.${pkgs.stdenv.hostPlatform.system}.myWaywall            
 
             pkgs.discord
-            
+            pkgs.limo
+
             pkgs.anki
 
             pkgs.pixelorama

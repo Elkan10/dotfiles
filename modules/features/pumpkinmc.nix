@@ -10,7 +10,7 @@
         };
         
         services.pumpkin = {
-            enable = true;
+            enable = false;
             openFirewall = true;
         
             package = pkgs.pumpkin.overrideAttrs (old: rec {
