@@ -115,6 +115,5 @@
         };
 
         services.fwupd.enable = true;
-        boot.initrd.systemd.enable = true;
     };
 }
