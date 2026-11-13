@@ -15,6 +15,10 @@
 
         awww.url = "git+https://codeberg.org/LGFae/awww";
         nvf.url = "github:NotAShelf/nvf";
+        rust-overlay = {
+            url = "github:oxalica/rust-overlay";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
     outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);

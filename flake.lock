@@ -374,6 +374,7 @@
         "lanzaboote": "lanzaboote",
         "nixpkgs": "nixpkgs_4",
         "nvf": "nvf",
+        "rust-overlay": "rust-overlay_3",
         "wrappers": "wrappers"
       }
     },
@@ -411,6 +412,26 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "rev": "8534567325bd8a8d2928e6afd81e0a87d19efd3c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rust-overlay_3": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794561628,
+        "narHash": "sha256-oWtItM1eQqkp9OJXq2/Zo10Y9Vu9PDE6O8JRjj4+EkE=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "84edd48f141b0c8910dffdd0296ddd577e829132",
         "type": "github"
       },
       "original": {

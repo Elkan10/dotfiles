@@ -118,6 +118,8 @@
 
                     pkgs.adwaita-icon-theme
                     pkgs.bibata-cursors
+
+                    pkgs.zathura
                 ];
 
                 environment.sessionVariables = {
