@@ -19,7 +19,7 @@
         xdg.portal.enable = true;
 
         boot = {
-            kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+            kernelPackages = pkgs.linuxPackages_latest;
             consoleLogLevel = 3;
             loader = {
                 efi = {
