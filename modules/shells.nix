@@ -6,13 +6,12 @@
       in
       pkgs.mkShell {
         packages = [ python pkgs.uv pkgs.ruff ] ++ libs;
-        UV_PYTHON = "${python}/bin/python";
         UV_PYTHON_DOWNLOADS = "never";
         LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath libs;
         shellHook = /* bash */ ''
           export VIRTUAL_ENV_DISABLE_PROMPT=1
           if [ ! -d .venv ]; then
-            uv venv .venv >&2
+            uv venv --python "${python}/bin/python" .venv >&2
           fi
           source .venv/bin/activate
 
